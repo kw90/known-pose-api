@@ -1,4 +1,4 @@
-# known_poses.DevelopersApi
+# known_pose.DevelopersApi
 
 All URIs are relative to *https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0*
 
@@ -20,13 +20,13 @@ Adds an accurate or inaccurate pose to the system. Add current pose (without pos
 ```python
 from __future__ import print_function
 import time
-import known_poses
-from known_poses.rest import ApiException
+import known_pose
+from known_pose.rest import ApiException
 from pprint import pprint
 
 # Create an instance of the API class
-api_instance = known_poses.DevelopersApi()
-basic_pose = known_poses.BasicPose() # BasicPose | Optional pose item to add (optional)
+api_instance = known_pose.DevelopersApi()
+basic_pose = known_pose.BasicPose() # BasicPose | Optional pose item to add (optional)
 
 try:
     # adds a pose item
@@ -75,12 +75,12 @@ By passing in the appropriate options, you can search for defined semantic poses
 ```python
 from __future__ import print_function
 import time
-import known_poses
-from known_poses.rest import ApiException
+import known_pose
+from known_pose.rest import ApiException
 from pprint import pprint
 
 # Create an instance of the API class
-api_instance = known_poses.DevelopersApi()
+api_instance = known_pose.DevelopersApi()
 search_string = 'search_string_example' # str | pass an optional search string for looking up a pose (optional)
 skip = 56 # int | number of records to skip for pagination (optional)
 limit = 56 # int | maximum number of records to return (optional)

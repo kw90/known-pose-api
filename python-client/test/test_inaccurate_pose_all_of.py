@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import known_poses
-from known_poses.models.inaccurate_pose_all_of import InaccuratePoseAllOf  # noqa: E501
-from known_poses.rest import ApiException
+import known_pose
+from known_pose.models.inaccurate_pose_all_of import InaccuratePoseAllOf  # noqa: E501
+from known_pose.rest import ApiException
 
 
 class TestInaccuratePoseAllOf(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestInaccuratePoseAllOf(unittest.TestCase):
     def testInaccuratePoseAllOf(self):
         """Test InaccuratePoseAllOf"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = known_poses.models.inaccurate_pose_all_of.InaccuratePoseAllOf()  # noqa: E501
+        # model = known_pose.models.inaccurate_pose_all_of.InaccuratePoseAllOf()  # noqa: E501
         pass
 
 

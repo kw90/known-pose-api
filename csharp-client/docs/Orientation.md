@@ -1,5 +1,5 @@
 
-# KnownPoses.Model.Orientation
+# KnownPose.Model.Orientation
 
 ## Properties
 

@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import known_poses
-from known_poses.api.developers_api import DevelopersApi  # noqa: E501
-from known_poses.rest import ApiException
+import known_pose
+from known_pose.api.developers_api import DevelopersApi  # noqa: E501
+from known_pose.rest import ApiException
 
 
 class TestDevelopersApi(unittest.TestCase):
     """DevelopersApi unit test stubs"""
 
     def setUp(self):
-        self.api = known_poses.api.developers_api.DevelopersApi()  # noqa: E501
+        self.api = known_pose.api.developers_api.DevelopersApi()  # noqa: E501
 
     def tearDown(self):
         pass

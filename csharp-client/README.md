@@ -1,4 +1,4 @@
-# KnownPoses - the C# library for the Known Pose API
+# KnownPose - the C# library for the Known Pose API
 
 Get and set (accurate) semantic poses for an environment.
 
@@ -41,9 +41,9 @@ Run the following command to generate the DLL
 Then include the DLL (under the `bin` folder) in the C# project, and use the namespaces:
 
 ```csharp
-using KnownPoses.Api;
-using KnownPoses.Client;
-using KnownPoses.Model;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
 
 ```
 
@@ -55,7 +55,7 @@ A `.nuspec` is included with the project. You can follow the Nuget quickstart to
 This `.nuspec` uses placeholders from the `.csproj`, so build the `.csproj` directly:
 
 ```
-nuget pack -Build -OutputDirectory out KnownPoses.csproj
+nuget pack -Build -OutputDirectory out KnownPose.csproj
 ```
 
 Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-packages/local-feeds) or [other host](https://docs.microsoft.com/en-us/nuget/hosting-packages/overview) and consume the new package via Nuget as usual.
@@ -66,9 +66,9 @@ Then, publish to a [local feed](https://docs.microsoft.com/en-us/nuget/hosting-p
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using KnownPoses.Api;
-using KnownPoses.Client;
-using KnownPoses.Model;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
 
 namespace Example
 {

@@ -1,5 +1,5 @@
 
-# KnownPoses.Model.InaccuratePose
+# KnownPose.Model.InaccuratePose
 
 ## Properties
 

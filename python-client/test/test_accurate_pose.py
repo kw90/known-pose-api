@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import known_poses
-from known_poses.models.accurate_pose import AccuratePose  # noqa: E501
-from known_poses.rest import ApiException
+import known_pose
+from known_pose.models.accurate_pose import AccuratePose  # noqa: E501
+from known_pose.rest import ApiException
 
 
 class TestAccuratePose(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestAccuratePose(unittest.TestCase):
     def testAccuratePose(self):
         """Test AccuratePose"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = known_poses.models.accurate_pose.AccuratePose()  # noqa: E501
+        # model = known_pose.models.accurate_pose.AccuratePose()  # noqa: E501
         pass
 
 

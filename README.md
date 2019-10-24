@@ -1,4 +1,4 @@
-# Known Poses API
+# Known Pose API
 
 Get and set (accurate) semantic poses for an environment. See full documentation
 on [SwaggerHub](https://app.swaggerhub.com/apis-docs/kw90/known-pose-api/1.1.0).
@@ -96,8 +96,8 @@ deploy-python:
     - chmod 644 ~/.ssh/known_hosts
     - git config --global user.email "gitlab@runner"
     - git config --global user.name "GitLab CI"
-    - git clone git@gitlab.example.com:mt-kawa/api-clients/known-poses-clients.git
-    - cd known-poses-clients
+    - git clone git@gitlab.example.com:mt-kawa/api-clients/known-pose-clients.git
+    - cd known-pose-clients
     - rm -r python || true
     - cp -r ../pypi/client python
     - git add .

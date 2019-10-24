@@ -1,5 +1,5 @@
 
-# KnownPoses.Model.AccuratePoseAllOf
+# KnownPose.Model.AccuratePoseAllOf
 
 ## Properties
 

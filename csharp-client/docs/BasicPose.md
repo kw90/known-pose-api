@@ -1,5 +1,5 @@
 
-# KnownPoses.Model.BasicPose
+# KnownPose.Model.BasicPose
 
 ## Properties
 

@@ -1,4 +1,4 @@
-# KnownPoses.Api.DevelopersApi
+# KnownPose.Api.DevelopersApi
 
 All URIs are relative to *https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0*
 
@@ -22,9 +22,9 @@ Adds an accurate or inaccurate pose to the system. Add current pose (without pos
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using KnownPoses.Api;
-using KnownPoses.Client;
-using KnownPoses.Model;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
 
 namespace Example
 {
@@ -98,9 +98,9 @@ By passing in the appropriate options, you can search for defined semantic poses
 ```csharp
 using System.Collections.Generic;
 using System.Diagnostics;
-using KnownPoses.Api;
-using KnownPoses.Client;
-using KnownPoses.Model;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
 
 namespace Example
 {
