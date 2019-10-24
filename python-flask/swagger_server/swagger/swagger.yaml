@@ -138,6 +138,104 @@ paths:
         503:
           description: Service Unavailable. Please try again later.
       x-openapi-router-controller: swagger_server.controllers.developers_controller
+  /poses/accurate:
+    get:
+      tags:
+      - developers
+      summary: searches accurate pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined accurate semantic poses in the environment
+      operationId: search_accurate_pose
+      parameters:
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccuratePose'
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
+  /poses/inaccurate:
+    get:
+      tags:
+      - developers
+      summary: searches inaccurate pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined inaccurate semantic poses in the environment
+      operationId: search_inaccurate_pose
+      parameters:
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InaccuratePose'
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
 components:
   schemas:
     AllPoses:
