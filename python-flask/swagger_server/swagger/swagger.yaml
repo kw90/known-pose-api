@@ -1,0 +1,190 @@
+openapi: 3.0.0
+info:
+  title: Known Pose API
+  description: Get and set (accurate) semantic poses for an environment.
+  contact:
+    name: Kai Waelti
+    email: Kai.Waelti@dfki.de
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.1.0
+servers:
+- url: https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0
+  description: SwaggerHub API Auto Mocking
+- url: http://robot-mb-01:9092/kw90/known-pose-api/1.1.0"
+  description: API Endpoint on Mobility Base Robot.
+tags:
+- name: developers
+  description: Operations available to developers
+paths:
+  /pose:
+    get:
+      tags:
+      - developers
+      summary: searches pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined semantic poses in the environment
+      operationId: search_pose
+      parameters:
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  oneOf:
+                  - $ref: '#/components/schemas/AccuratePose'
+                  - $ref: '#/components/schemas/InaccuratePose'
+                x-content-type: application/json
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
+    post:
+      tags:
+      - developers
+      summary: adds a pose item
+      description: |
+        Adds an accurate or inaccurate pose to the system. Add current pose (without pose request body) to add an accurate pose.
+      operationId: add_pose
+      requestBody:
+        description: Optional pose item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasicPose'
+      responses:
+        201:
+          description: pose created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing pose already exists
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
+components:
+  schemas:
+    AccuratePose:
+      allOf:
+      - $ref: '#/components/schemas/InaccuratePose'
+      - required:
+        - reference_scan
+        type: object
+        properties:
+          reference_scan:
+            type: string
+            description: Contents of the reference scan assembled as point cloud data
+              following [RFC 4648 § 5](https://tools.ietf.org/html/rfc4648#section-5)
+            example: |
+              VERSION .7
+              FIELDS x y z rgb
+              SIZE 4 4 4 4
+              TYPE F F F F
+              COUNT 1 1 1 1
+              WIDTH 213
+              HEIGHT 1
+              VIEWPOINT 0 0 0 1 0 0 0
+              POINTS 213
+              DATA ascii
+              0.93773 0.33763 0 4.2108e+06
+              0.90805 0.35641 0 4.2108e+06
+              0.81915 0.32 0 4.2108e+06
+              0.97192 0.278 0 4.2108e+06
+              0.944 0.29474 0 4.2108e+06
+              0.98111 0.24247 0 4.2108e+06
+              ...
+    InaccuratePose:
+      allOf:
+      - $ref: '#/components/schemas/BasicPose'
+      - required:
+        - id
+        - taken_at
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            example: d290f1ee-6c54-4b01-90e6-d701748f0851
+          taken_at:
+            type: string
+            format: date-time
+    BasicPose:
+      required:
+      - name
+      - orientation
+      - position
+      type: object
+      properties:
+        name:
+          type: string
+          example: Bottle Cap Workbench
+        position:
+          $ref: '#/components/schemas/Position'
+        orientation:
+          $ref: '#/components/schemas/Orientation'
+    Position:
+      required:
+      - x
+      - y
+      - z
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        z:
+          type: number
+          format: double
+    Orientation:
+      required:
+      - w
+      - x
+      - y
+      - z
+      properties:
+        x:
+          type: number
+          format: double
+        y:
+          type: number
+          format: double
+        z:
+          type: number
+          format: double
+        w:
+          type: number
+          format: double
+
