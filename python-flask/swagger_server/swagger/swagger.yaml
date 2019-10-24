@@ -10,8 +10,6 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.1.0
 servers:
-- url: https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0
-  description: SwaggerHub API Auto Mocking
 - url: http://robot-mb-01:9092/kw90/known-pose-api/1.1.0
   description: API Endpoint on Mobility Base Robot.
 tags:
