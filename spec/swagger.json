@@ -273,5 +273,9 @@
         }
       }
     }
-  }
+  },
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0"
+  } ]
 }
