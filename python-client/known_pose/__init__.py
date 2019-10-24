@@ -5,7 +5,7 @@
 """
     Known Pose API
 
-    Get and set (accurate) semantic poses for an environment.  # noqa: E501
+    Define and retrieve (accurate) semantic poses in a 2D environment.  # noqa: E501
 
     The version of the OpenAPI document: 1.1.0
     Contact: Kai.Waelti@dfki.de
@@ -34,6 +34,7 @@ from known_pose.models.accurate_pose_all_of import AccuratePoseAllOf
 from known_pose.models.basic_pose import BasicPose
 from known_pose.models.inaccurate_pose import InaccuratePose
 from known_pose.models.inaccurate_pose_all_of import InaccuratePoseAllOf
+from known_pose.models.inline_response200 import InlineResponse200
 from known_pose.models.orientation import Orientation
 from known_pose.models.position import Position
 

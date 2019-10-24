@@ -1,7 +1,7 @@
 /* 
  * Known Pose API
  *
- * Get and set (accurate) semantic poses for an environment.
+ * Define and retrieve (accurate) semantic poses in a 2D environment.
  *
  * The version of the OpenAPI document: 1.1.0
  * Contact: Kai.Waelti@dfki.de
@@ -45,6 +45,27 @@ namespace KnownPose.Api
         /// <param name="basicPose">Optional pose item to add (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
         ApiResponse<Object> AddPoseWithHttpInfo (BasicPose basicPose = default(BasicPose));
+        /// <summary>
+        /// deletes a pose item
+        /// </summary>
+        /// <remarks>
+        /// Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>InlineResponse200</returns>
+        InlineResponse200 PosesIdDelete (string id);
+
+        /// <summary>
+        /// deletes a pose item
+        /// </summary>
+        /// <remarks>
+        /// Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        ApiResponse<InlineResponse200> PosesIdDeleteWithHttpInfo (string id);
         /// <summary>
         /// searches pose
         /// </summary>
@@ -93,6 +114,27 @@ namespace KnownPose.Api
         /// <param name="basicPose">Optional pose item to add (optional)</param>
         /// <returns>Task of ApiResponse</returns>
         System.Threading.Tasks.Task<ApiResponse<Object>> AddPoseAsyncWithHttpInfo (BasicPose basicPose = default(BasicPose));
+        /// <summary>
+        /// deletes a pose item
+        /// </summary>
+        /// <remarks>
+        /// Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>Task of InlineResponse200</returns>
+        System.Threading.Tasks.Task<InlineResponse200> PosesIdDeleteAsync (string id);
+
+        /// <summary>
+        /// deletes a pose item
+        /// </summary>
+        /// <remarks>
+        /// Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> PosesIdDeleteAsyncWithHttpInfo (string id);
         /// <summary>
         /// searches pose
         /// </summary>
@@ -249,7 +291,7 @@ namespace KnownPose.Api
         public ApiResponse<Object> AddPoseWithHttpInfo (BasicPose basicPose = default(BasicPose))
         {
 
-            var localVarPath = "/pose";
+            var localVarPath = "/poses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -319,7 +361,7 @@ namespace KnownPose.Api
         public async System.Threading.Tasks.Task<ApiResponse<Object>> AddPoseAsyncWithHttpInfo (BasicPose basicPose = default(BasicPose))
         {
 
-            var localVarPath = "/pose";
+            var localVarPath = "/poses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -369,6 +411,139 @@ namespace KnownPose.Api
         }
 
         /// <summary>
+        /// deletes a pose item Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>InlineResponse200</returns>
+        public InlineResponse200 PosesIdDelete (string id)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = PosesIdDeleteWithHttpInfo(id);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// deletes a pose item Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>ApiResponse of InlineResponse200</returns>
+        public ApiResponse<InlineResponse200> PosesIdDeleteWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DevelopersApi->PosesIdDelete");
+
+            var localVarPath = "/poses/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PosesIdDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
+        /// deletes a pose item Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>Task of InlineResponse200</returns>
+        public async System.Threading.Tasks.Task<InlineResponse200> PosesIdDeleteAsync (string id)
+        {
+             ApiResponse<InlineResponse200> localVarResponse = await PosesIdDeleteAsyncWithHttpInfo(id);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// deletes a pose item Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;. 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id">uuid</param>
+        /// <returns>Task of ApiResponse (InlineResponse200)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> PosesIdDeleteAsyncWithHttpInfo (string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new ApiException(400, "Missing required parameter 'id' when calling DevelopersApi->PosesIdDelete");
+
+            var localVarPath = "/poses/{id}";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (id != null) localVarPathParams.Add("id", this.Configuration.ApiClient.ParameterToString(id)); // path parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.DELETE, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("PosesIdDelete", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InlineResponse200>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InlineResponse200) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InlineResponse200)));
+        }
+
+        /// <summary>
         /// searches pose By passing in the appropriate options, you can search for defined semantic poses in the environment 
         /// </summary>
         /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
@@ -393,7 +568,7 @@ namespace KnownPose.Api
         public ApiResponse<List<OneOfAccuratePoseInaccuratePose>> SearchPoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
 
-            var localVarPath = "/pose";
+            var localVarPath = "/poses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -463,7 +638,7 @@ namespace KnownPose.Api
         public async System.Threading.Tasks.Task<ApiResponse<List<OneOfAccuratePoseInaccuratePose>>> SearchPoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
 
-            var localVarPath = "/pose";
+            var localVarPath = "/poses";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);

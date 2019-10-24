@@ -4,8 +4,9 @@ All URIs are relative to *https://virtserver.swaggerhub.com/kw90/known-pose-api/
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**AddPose**](DevelopersApi.md#addpose) | **POST** /pose | adds a pose item
-[**SearchPose**](DevelopersApi.md#searchpose) | **GET** /pose | searches pose
+[**AddPose**](DevelopersApi.md#addpose) | **POST** /poses | adds a pose item
+[**PosesIdDelete**](DevelopersApi.md#posesiddelete) | **DELETE** /poses/{id} | deletes a pose item
+[**SearchPose**](DevelopersApi.md#searchpose) | **GET** /poses | searches pose
 
 
 
@@ -78,6 +79,87 @@ No authorization required
 | **201** | pose created |  -  |
 | **400** | invalid input, object invalid |  -  |
 | **409** | an existing pose already exists |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## PosesIdDelete
+
+> InlineResponse200 PosesIdDelete (string id)
+
+deletes a pose item
+
+Deletes an accurate or inaccurate pose from the system using the `uuid`. 
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
+
+namespace Example
+{
+    public class PosesIdDeleteExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0";
+            var apiInstance = new DevelopersApi(Configuration.Default);
+            var id = id_example;  // string | uuid
+
+            try
+            {
+                // deletes a pose item
+                InlineResponse200 result = apiInstance.PosesIdDelete(id);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DevelopersApi.PosesIdDelete: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| uuid | 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Delete was successful. |  * Request-Id - Request uuid <br>  |
+| **400** | Bad Request. The data from the client is invalid. |  -  |
+| **401** | Unauthorized. |  -  |
+| **403** | Forbidden. Improper permissions for this operation. |  -  |
+| **404** | Could not find the object. |  -  |
+| **500** | Internal Server Error. For some unknown reason the server failed. |  -  |
+| **503** | Service Unavailable. Please try again later. |  -  |
 
 [[Back to top]](#)
 [[Back to API list]](../README.md#documentation-for-api-endpoints)

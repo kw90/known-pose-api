@@ -25,41 +25,41 @@ using OpenAPIDateConverter = KnownPose.Client.OpenAPIDateConverter;
 namespace KnownPose.Model
 {
     /// <summary>
-    /// InaccuratePoseAllOf
+    /// InlineResponse200
     /// </summary>
     [DataContract]
-    public partial class InaccuratePoseAllOf :  IEquatable<InaccuratePoseAllOf>, IValidatableObject
+    public partial class InlineResponse200 :  IEquatable<InlineResponse200>, IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="InaccuratePoseAllOf" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected InaccuratePoseAllOf() { }
+        protected InlineResponse200() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="InaccuratePoseAllOf" /> class.
+        /// Initializes a new instance of the <see cref="InlineResponse200" /> class.
         /// </summary>
         /// <param name="id">id (required).</param>
-        /// <param name="takenAt">takenAt (required).</param>
-        public InaccuratePoseAllOf(Guid id = default(Guid), DateTime takenAt = default(DateTime))
+        /// <param name="deleted">deleted (required).</param>
+        public InlineResponse200(Guid id = default(Guid), bool deleted = default(bool))
         {
             // to ensure "id" is required (not null)
             if (id == null)
             {
-                throw new InvalidDataException("id is a required property for InaccuratePoseAllOf and cannot be null");
+                throw new InvalidDataException("id is a required property for InlineResponse200 and cannot be null");
             }
             else
             {
                 this.Id = id;
             }
             
-            // to ensure "takenAt" is required (not null)
-            if (takenAt == null)
+            // to ensure "deleted" is required (not null)
+            if (deleted == null)
             {
-                throw new InvalidDataException("takenAt is a required property for InaccuratePoseAllOf and cannot be null");
+                throw new InvalidDataException("deleted is a required property for InlineResponse200 and cannot be null");
             }
             else
             {
-                this.TakenAt = takenAt;
+                this.Deleted = deleted;
             }
             
         }
@@ -71,10 +71,10 @@ namespace KnownPose.Model
         public Guid Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets TakenAt
+        /// Gets or Sets Deleted
         /// </summary>
-        [DataMember(Name="taken_at", EmitDefaultValue=false)]
-        public DateTime TakenAt { get; set; }
+        [DataMember(Name="deleted", EmitDefaultValue=false)]
+        public bool Deleted { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -83,9 +83,9 @@ namespace KnownPose.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class InaccuratePoseAllOf {\n");
+            sb.Append("class InlineResponse200 {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  TakenAt: ").Append(TakenAt).Append("\n");
+            sb.Append("  Deleted: ").Append(Deleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -106,15 +106,15 @@ namespace KnownPose.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as InaccuratePoseAllOf);
+            return this.Equals(input as InlineResponse200);
         }
 
         /// <summary>
-        /// Returns true if InaccuratePoseAllOf instances are equal
+        /// Returns true if InlineResponse200 instances are equal
         /// </summary>
-        /// <param name="input">Instance of InaccuratePoseAllOf to be compared</param>
+        /// <param name="input">Instance of InlineResponse200 to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(InaccuratePoseAllOf input)
+        public bool Equals(InlineResponse200 input)
         {
             if (input == null)
                 return false;
@@ -126,9 +126,9 @@ namespace KnownPose.Model
                     this.Id.Equals(input.Id))
                 ) && 
                 (
-                    this.TakenAt == input.TakenAt ||
-                    (this.TakenAt != null &&
-                    this.TakenAt.Equals(input.TakenAt))
+                    this.Deleted == input.Deleted ||
+                    (this.Deleted != null &&
+                    this.Deleted.Equals(input.Deleted))
                 );
         }
 
@@ -143,8 +143,8 @@ namespace KnownPose.Model
                 int hashCode = 41;
                 if (this.Id != null)
                     hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.TakenAt != null)
-                    hashCode = hashCode * 59 + this.TakenAt.GetHashCode();
+                if (this.Deleted != null)
+                    hashCode = hashCode * 59 + this.Deleted.GetHashCode();
                 return hashCode;
             }
         }

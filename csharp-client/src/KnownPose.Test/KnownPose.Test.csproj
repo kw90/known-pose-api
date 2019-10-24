@@ -2,7 +2,7 @@
 <!--
 Known Pose API
 
-Get and set (accurate) semantic poses for an environment.
+Define and retrieve (accurate) semantic poses in a 2D environment.
 
 The version of the OpenAPI document: 1.1.0
 Contact: Kai.Waelti@dfki.de
@@ -81,7 +81,7 @@ Contact: Kai.Waelti@dfki.de
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\KnownPose\KnownPose.csproj">
-          <Project>{8BC57DE9-E6BC-4F1D-B332-57221640E94B}</Project>
+          <Project>{F6F52BB4-7227-4B1F-AA66-98CFC280757B}</Project>
           <Name>KnownPose</Name>
       </ProjectReference>
   </ItemGroup>

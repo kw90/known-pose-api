@@ -3,7 +3,7 @@
 """
     Known Pose API
 
-    Get and set (accurate) semantic poses for an environment.  # noqa: E501
+    Define and retrieve (accurate) semantic poses in a 2D environment.  # noqa: E501
 
     The version of the OpenAPI document: 1.1.0
     Contact: Kai.Waelti@dfki.de
@@ -271,7 +271,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                 'description': "SwaggerHub API Auto Mocking",
             },
             {
-                'url': "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0"",
+                'url': "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0",
                 'description': "API Endpoint on Mobility Base Robot.",
             }
         ]

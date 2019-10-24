@@ -4,8 +4,9 @@ All URIs are relative to *https://virtserver.swaggerhub.com/kw90/known-pose-api/
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**add_pose**](DevelopersApi.md#add_pose) | **POST** /pose | adds a pose item
-[**search_pose**](DevelopersApi.md#search_pose) | **GET** /pose | searches pose
+[**add_pose**](DevelopersApi.md#add_pose) | **POST** /poses | adds a pose item
+[**poses_id_delete**](DevelopersApi.md#poses_id_delete) | **DELETE** /poses/{id} | deletes a pose item
+[**search_pose**](DevelopersApi.md#search_pose) | **GET** /poses | searches pose
 
 
 # **add_pose**
@@ -60,6 +61,66 @@ No authorization required
 **201** | pose created |  -  |
 **400** | invalid input, object invalid |  -  |
 **409** | an existing pose already exists |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **poses_id_delete**
+> InlineResponse200 poses_id_delete(id)
+
+deletes a pose item
+
+Deletes an accurate or inaccurate pose from the system using the `uuid`. 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import known_pose
+from known_pose.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = known_pose.DevelopersApi()
+id = 'id_example' # str | uuid
+
+try:
+    # deletes a pose item
+    api_response = api_instance.poses_id_delete(id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DevelopersApi->poses_id_delete: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **str**| uuid | 
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Delete was successful. |  * Request-Id - Request uuid <br>  |
+**400** | Bad Request. The data from the client is invalid. |  -  |
+**401** | Unauthorized. |  -  |
+**403** | Forbidden. Improper permissions for this operation. |  -  |
+**404** | Could not find the object. |  -  |
+**500** | Internal Server Error. For some unknown reason the server failed. |  -  |
+**503** | Service Unavailable. Please try again later. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
