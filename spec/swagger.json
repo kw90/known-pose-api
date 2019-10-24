@@ -1,9 +1,6 @@
 {
   "openapi" : "3.0.0",
-  "servers" : [ {
-    "url" : "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0",
-    "description" : "API Endpoint on Mobility Base Robot"
-  } ],
+  "servers" : null,
   "info" : {
     "version" : "1.1.0",
     "title" : "Known Pose API",
