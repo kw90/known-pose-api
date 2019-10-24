@@ -17,10 +17,10 @@ REQUIRES = ["connexion"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Known Poses API",
+    description="Known Pose API",
     author_email="Kai.Waelti@dfki.de",
     url="",
-    keywords=["Swagger", "Known Poses API"],
+    keywords=["Swagger", "Known Pose API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     package_data={'': ['swagger/swagger.yaml']},
@@ -28,6 +28,6 @@ setup(
     entry_points={
         'console_scripts': ['swagger_server=swagger_server.__main__:main']},
     long_description="""\
-    Get and set (accurate) semantic poses for an environment.
+    Define and retrieve (accurate) semantic poses in a 2D environment.
     """
 )

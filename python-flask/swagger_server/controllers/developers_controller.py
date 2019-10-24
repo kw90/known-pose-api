@@ -2,6 +2,7 @@ import connexion
 import six
 
 from swagger_server.models.basic_pose import BasicPose  # noqa: E501
+from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server.models.object import Object  # noqa: E501
 from swagger_server import util
 
@@ -18,6 +19,19 @@ def add_pose(body=None):  # noqa: E501
     """
     if connexion.request.is_json:
         body = BasicPose.from_dict(connexion.request.get_json())  # noqa: E501
+    return 'do some magic!'
+
+
+def poses_id_delete(id):  # noqa: E501
+    """deletes a pose item
+
+    Deletes an accurate or inaccurate pose from the system using the &#x60;uuid&#x60;.  # noqa: E501
+
+    :param id: uuid
+    :type id: str
+
+    :rtype: InlineResponse200
+    """
     return 'do some magic!'
 
 
