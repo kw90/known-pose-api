@@ -1,6 +1,5 @@
 {
   "openapi" : "3.0.0",
-  "servers" : null,
   "info" : {
     "version" : "1.1.0",
     "title" : "Known Pose API",
