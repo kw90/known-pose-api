@@ -60,14 +60,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "anyOf" : [ {
-                      "$ref" : "#/components/schemas/AccuratePose"
-                    }, {
-                      "$ref" : "#/components/schemas/InaccuratePose"
-                    } ]
-                  }
+                  "$ref" : "#/components/schemas/AllPoses"
                 }
               }
             }
@@ -183,6 +176,12 @@
   },
   "components" : {
     "schemas" : {
+      "AllPoses" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/BasicPose"
+        }
+      },
       "AccuratePose" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InaccuratePose"
