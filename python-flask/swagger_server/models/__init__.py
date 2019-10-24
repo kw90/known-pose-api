@@ -4,6 +4,7 @@
 from __future__ import absolute_import
 # import models into model package
 from swagger_server.models.accurate_pose import AccuratePose
+from swagger_server.models.all_poses import AllPoses
 from swagger_server.models.basic_pose import BasicPose
 from swagger_server.models.inaccurate_pose import InaccuratePose
 from swagger_server.models.inline_response200 import InlineResponse200
