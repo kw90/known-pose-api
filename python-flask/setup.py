@@ -17,10 +17,10 @@ REQUIRES = ["connexion"]
 setup(
     name=NAME,
     version=VERSION,
-    description="Known Pose API",
+    description="Known Poses API",
     author_email="Kai.Waelti@dfki.de",
     url="",
-    keywords=["Swagger", "Known Pose API"],
+    keywords=["Swagger", "Known Poses API"],
     install_requires=REQUIRES,
     packages=find_packages(),
     package_data={'': ['swagger/swagger.yaml']},
