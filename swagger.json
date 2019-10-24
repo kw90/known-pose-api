@@ -1,0 +1,209 @@
+{
+  "openapi" : "3.0.0",
+  "servers" : [ {
+    "description" : "SwaggerHub API Auto Mocking",
+    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0"
+  }, {
+    "url" : "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0\"",
+    "description" : "API Endpoint on Mobility Base Robot."
+  } ],
+  "info" : {
+    "version" : "1.1.0",
+    "title" : "Known Pose API",
+    "description" : "Get and set (accurate) semantic poses for an environment.",
+    "contact" : {
+      "email" : "Kai.Waelti@dfki.de",
+      "name" : "Kai Waelti"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "tags" : [ {
+    "name" : "developers",
+    "description" : "Operations available to developers"
+  } ],
+  "paths" : {
+    "/pose" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "searches pose",
+        "operationId" : "searchPose",
+        "description" : "By passing in the appropriate options, you can search for\ndefined semantic poses in the environment\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "searchString",
+          "description" : "pass an optional search string for looking up a pose",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "in" : "query",
+          "name" : "skip",
+          "description" : "number of records to skip for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "minimum" : 0
+          }
+        }, {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "minimum" : 0,
+            "maximum" : 50
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "oneOf" : [ {
+                      "$ref" : "#/components/schemas/AccuratePose"
+                    }, {
+                      "$ref" : "#/components/schemas/InaccuratePose"
+                    } ]
+                  }
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "adds a pose item",
+        "operationId" : "addPose",
+        "description" : "Adds an accurate or inaccurate pose to the system. Add current pose (without pose request body) to add an accurate pose.\n",
+        "responses" : {
+          "201" : {
+            "description" : "pose created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing pose already exists"
+          }
+        },
+        "requestBody" : {
+          "description" : "Optional pose item to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BasicPose"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "AccuratePose" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/InaccuratePose"
+        }, {
+          "type" : "object",
+          "required" : [ "reference_scan" ],
+          "properties" : {
+            "reference_scan" : {
+              "type" : "string",
+              "description" : "Contents of the reference scan assembled as point cloud data following [RFC 4648 § 5](https://tools.ietf.org/html/rfc4648#section-5)",
+              "example" : "VERSION .7\nFIELDS x y z rgb\nSIZE 4 4 4 4\nTYPE F F F F\nCOUNT 1 1 1 1\nWIDTH 213\nHEIGHT 1\nVIEWPOINT 0 0 0 1 0 0 0\nPOINTS 213\nDATA ascii\n0.93773 0.33763 0 4.2108e+06\n0.90805 0.35641 0 4.2108e+06\n0.81915 0.32 0 4.2108e+06\n0.97192 0.278 0 4.2108e+06\n0.944 0.29474 0 4.2108e+06\n0.98111 0.24247 0 4.2108e+06\n...\n"
+            }
+          }
+        } ]
+      },
+      "InaccuratePose" : {
+        "allOf" : [ {
+          "$ref" : "#/components/schemas/BasicPose"
+        }, {
+          "type" : "object",
+          "required" : [ "id", "taken_at" ],
+          "properties" : {
+            "id" : {
+              "type" : "string",
+              "format" : "uuid",
+              "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            },
+            "taken_at" : {
+              "type" : "string",
+              "format" : "date-time",
+              "example" : "2017-07-21T17:32:28Z"
+            }
+          }
+        } ]
+      },
+      "BasicPose" : {
+        "type" : "object",
+        "required" : [ "name", "position", "orientation" ],
+        "properties" : {
+          "name" : {
+            "type" : "string",
+            "example" : "Bottle Cap Workbench"
+          },
+          "position" : {
+            "$ref" : "#/components/schemas/Position"
+          },
+          "orientation" : {
+            "$ref" : "#/components/schemas/Orientation"
+          }
+        }
+      },
+      "Position" : {
+        "required" : [ "x", "y", "z" ],
+        "properties" : {
+          "x" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "y" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "z" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        }
+      },
+      "Orientation" : {
+        "required" : [ "x", "y", "z", "w" ],
+        "properties" : {
+          "x" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "y" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "z" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "w" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        }
+      }
+    }
+  }
+}
