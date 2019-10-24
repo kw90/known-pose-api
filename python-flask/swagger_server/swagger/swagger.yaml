@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Known Pose API
+  title: Known Poses API
   description: Get and set (accurate) semantic poses for an environment.
   contact:
     name: Kai Waelti
