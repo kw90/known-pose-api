@@ -120,8 +120,7 @@ user. Also, pass in the current directory as a volume inside the container
 located at `/local`.
 
 ```zsh
-docker run -it --rm --name openapi-generator --user $(id -u):$(id -g) --volume
-`pwd`:/local kw90/openapi-generator-cli:latest sh
+docker run -it --rm --name openapi-generator --user $(id -u):$(id -g) --volume `pwd`:/local kw90/openapi-generator-cli:latest sh
 ```
 
 Once the shell inside the container is available run the following command to
@@ -129,8 +128,7 @@ generate the client or server code and documentation
 
 
 ```zsh
-java -jar /openapi-generator-cli.jar generate -g python -i spec/swagger.json -c
-client-config/python.json -o python-client
+java -jar /openapi-generator-cli.jar generate -g python -i spec/swagger.json -c client-config/python.json -o python-client
 ```
 
 
