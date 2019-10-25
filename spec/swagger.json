@@ -1,7 +1,7 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "version" : "1.1.0",
+    "version" : "1.2.0",
     "title" : "Known Pose API",
     "description" : "Define and retrieve (accurate) semantic poses in a 2D environment.",
     "contact" : {
@@ -53,6 +53,14 @@
             "minimum" : 0,
             "maximum" : 50
           }
+        }, {
+          "in" : "query",
+          "name" : "isAccuratePose",
+          "description" : "filter by pose accuracy",
+          "required" : false,
+          "schema" : {
+            "type" : "boolean"
+          }
         } ],
         "responses" : {
           "200" : {
@@ -60,7 +68,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/AllPoses"
+                  "$ref" : "#/components/schemas/AnyPoses"
                 }
               }
             }
@@ -172,120 +180,22 @@
           }
         }
       }
-    },
-    "/poses/accurate" : {
-      "get" : {
-        "tags" : [ "developers" ],
-        "summary" : "searches accurate pose",
-        "operationId" : "searchAccuratePose",
-        "description" : "By passing in the appropriate options, you can search for\ndefined accurate semantic poses in the environment\n",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "searchString",
-          "description" : "pass an optional search string for looking up a pose",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "in" : "query",
-          "name" : "skip",
-          "description" : "number of records to skip for pagination",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0
-          }
-        }, {
-          "in" : "query",
-          "name" : "limit",
-          "description" : "maximum number of records to return",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 50
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "search results matching criteria",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/AccuratePose"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "bad input parameter"
-          }
-        }
-      }
-    },
-    "/poses/inaccurate" : {
-      "get" : {
-        "tags" : [ "developers" ],
-        "summary" : "searches inaccurate pose",
-        "operationId" : "searchInaccuratePose",
-        "description" : "By passing in the appropriate options, you can search for\ndefined inaccurate semantic poses in the environment\n",
-        "parameters" : [ {
-          "in" : "query",
-          "name" : "searchString",
-          "description" : "pass an optional search string for looking up a pose",
-          "required" : false,
-          "schema" : {
-            "type" : "string"
-          }
-        }, {
-          "in" : "query",
-          "name" : "skip",
-          "description" : "number of records to skip for pagination",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0
-          }
-        }, {
-          "in" : "query",
-          "name" : "limit",
-          "description" : "maximum number of records to return",
-          "required" : false,
-          "schema" : {
-            "type" : "integer",
-            "format" : "int32",
-            "minimum" : 0,
-            "maximum" : 50
-          }
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "search results matching criteria",
-            "content" : {
-              "application/json" : {
-                "schema" : {
-                  "$ref" : "#/components/schemas/InaccuratePose"
-                }
-              }
-            }
-          },
-          "400" : {
-            "description" : "bad input parameter"
-          }
-        }
-      }
     }
   },
   "components" : {
     "schemas" : {
-      "AllPoses" : {
+      "AnyPoses" : {
         "type" : "array",
+        "title" : "Any Poses",
+        "description" : "Workaround Schema to allow sending different pose types in an array as a response.\n",
         "items" : {
-          "$ref" : "#/components/schemas/BasicPose"
+          "anyOf" : [ {
+            "$ref" : "#/components/schemas/BasicPose"
+          }, {
+            "$ref" : "#/components/schemas/InaccuratePose"
+          }, {
+            "$ref" : "#/components/schemas/AccuratePose"
+          } ]
         }
       },
       "AccuratePose" : {
@@ -293,6 +203,8 @@
           "$ref" : "#/components/schemas/InaccuratePose"
         }, {
           "type" : "object",
+          "title" : "Accurate Pose",
+          "description" : "A unique and stamped accurate Pose in free space.",
           "required" : [ "reference_scan" ],
           "properties" : {
             "reference_scan" : {
@@ -308,6 +220,8 @@
           "$ref" : "#/components/schemas/BasicPose"
         }, {
           "type" : "object",
+          "title" : "Inaccurate Pose",
+          "description" : "A unique and stamped inaccurate Pose in free space.",
           "required" : [ "id", "taken_at" ],
           "properties" : {
             "id" : {
@@ -325,6 +239,8 @@
       },
       "BasicPose" : {
         "type" : "object",
+        "title" : "Basic Pose",
+        "description" : "An basic Pose in free space composed of position and orientation.",
         "required" : [ "name", "position", "orientation" ],
         "properties" : {
           "name" : {
@@ -340,6 +256,8 @@
         }
       },
       "Position" : {
+        "title" : "Point Position",
+        "description" : "Position of a point in free space.",
         "required" : [ "x", "y", "z" ],
         "properties" : {
           "x" : {
@@ -357,6 +275,8 @@
         }
       },
       "Orientation" : {
+        "title" : "Orientation Quaternion",
+        "description" : "Orientation in free space in quaternion form.",
         "required" : [ "x", "y", "z", "w" ],
         "properties" : {
           "x" : {
@@ -381,9 +301,6 @@
   },
   "servers" : [ {
     "description" : "SwaggerHub API Auto Mocking",
-    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0"
-  }, {
-    "url" : "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0",
-    "description" : "API Endpoint on Mobility Base Robot"
+    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.2.0"
   } ]
 }

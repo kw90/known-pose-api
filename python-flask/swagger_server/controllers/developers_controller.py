@@ -1,10 +1,8 @@
 import connexion
 import six
 
-from swagger_server.models.accurate_pose import AccuratePose  # noqa: E501
-from swagger_server.models.all_poses import AllPoses  # noqa: E501
+from swagger_server.models.any_poses import AnyPoses  # noqa: E501
 from swagger_server.models.basic_pose import BasicPose  # noqa: E501
-from swagger_server.models.inaccurate_pose import InaccuratePose  # noqa: E501
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server import util
 
@@ -37,41 +35,7 @@ def poses_id_delete(id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_accurate_pose(search_string=None, skip=None, limit=None):  # noqa: E501
-    """searches accurate pose
-
-    By passing in the appropriate options, you can search for defined accurate semantic poses in the environment  # noqa: E501
-
-    :param search_string: pass an optional search string for looking up a pose
-    :type search_string: str
-    :param skip: number of records to skip for pagination
-    :type skip: int
-    :param limit: maximum number of records to return
-    :type limit: int
-
-    :rtype: AccuratePose
-    """
-    return 'do some magic!'
-
-
-def search_inaccurate_pose(search_string=None, skip=None, limit=None):  # noqa: E501
-    """searches inaccurate pose
-
-    By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment  # noqa: E501
-
-    :param search_string: pass an optional search string for looking up a pose
-    :type search_string: str
-    :param skip: number of records to skip for pagination
-    :type skip: int
-    :param limit: maximum number of records to return
-    :type limit: int
-
-    :rtype: InaccuratePose
-    """
-    return 'do some magic!'
-
-
-def search_pose(search_string=None, skip=None, limit=None):  # noqa: E501
+def search_pose(search_string=None, skip=None, limit=None, is_accurate_pose=None):  # noqa: E501
     """searches pose
 
     By passing in the appropriate options, you can search for defined semantic poses in the environment  # noqa: E501
@@ -82,7 +46,9 @@ def search_pose(search_string=None, skip=None, limit=None):  # noqa: E501
     :type skip: int
     :param limit: maximum number of records to return
     :type limit: int
+    :param is_accurate_pose: filter by pose accuracy
+    :type is_accurate_pose: bool
 
-    :rtype: AllPoses
+    :rtype: AnyPoses
     """
     return 'do some magic!'
