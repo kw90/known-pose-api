@@ -67,6 +67,56 @@ namespace KnownPose.Api
         /// <returns>ApiResponse of InlineResponse200</returns>
         ApiResponse<InlineResponse200> PosesIdDeleteWithHttpInfo (string id);
         /// <summary>
+        /// searches accurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>AccuratePose</returns>
+        AccuratePose SearchAccuratePose (string searchString = default(string), int skip = default(int), int limit = default(int));
+
+        /// <summary>
+        /// searches accurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>ApiResponse of AccuratePose</returns>
+        ApiResponse<AccuratePose> SearchAccuratePoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <summary>
+        /// searches inaccurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>InaccuratePose</returns>
+        InaccuratePose SearchInaccuratePose (string searchString = default(string), int skip = default(int), int limit = default(int));
+
+        /// <summary>
+        /// searches inaccurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>ApiResponse of InaccuratePose</returns>
+        ApiResponse<InaccuratePose> SearchInaccuratePoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <summary>
         /// searches pose
         /// </summary>
         /// <remarks>
@@ -76,8 +126,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        List<OneOfAccuratePoseInaccuratePose> SearchPose (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <returns>List&lt;BasicPose&gt;</returns>
+        List<BasicPose> SearchPose (string searchString = default(string), int skip = default(int), int limit = default(int));
 
         /// <summary>
         /// searches pose
@@ -89,8 +139,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        ApiResponse<List<OneOfAccuratePoseInaccuratePose>> SearchPoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <returns>ApiResponse of List&lt;BasicPose&gt;</returns>
+        ApiResponse<List<BasicPose>> SearchPoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -136,6 +186,56 @@ namespace KnownPose.Api
         /// <returns>Task of ApiResponse (InlineResponse200)</returns>
         System.Threading.Tasks.Task<ApiResponse<InlineResponse200>> PosesIdDeleteAsyncWithHttpInfo (string id);
         /// <summary>
+        /// searches accurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of AccuratePose</returns>
+        System.Threading.Tasks.Task<AccuratePose> SearchAccuratePoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int));
+
+        /// <summary>
+        /// searches accurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of ApiResponse (AccuratePose)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AccuratePose>> SearchAccuratePoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <summary>
+        /// searches inaccurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of InaccuratePose</returns>
+        System.Threading.Tasks.Task<InaccuratePose> SearchInaccuratePoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int));
+
+        /// <summary>
+        /// searches inaccurate pose
+        /// </summary>
+        /// <remarks>
+        /// By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </remarks>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of ApiResponse (InaccuratePose)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InaccuratePose>> SearchInaccuratePoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <summary>
         /// searches pose
         /// </summary>
         /// <remarks>
@@ -145,8 +245,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        System.Threading.Tasks.Task<List<OneOfAccuratePoseInaccuratePose>> SearchPoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <returns>Task of List&lt;BasicPose&gt;</returns>
+        System.Threading.Tasks.Task<List<BasicPose>> SearchPoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int));
 
         /// <summary>
         /// searches pose
@@ -158,8 +258,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;OneOfAccuratePoseInaccuratePose&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<OneOfAccuratePoseInaccuratePose>>> SearchPoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
+        /// <returns>Task of ApiResponse (List&lt;BasicPose&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<BasicPose>>> SearchPoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int));
         #endregion Asynchronous Operations
     }
 
@@ -544,16 +644,294 @@ namespace KnownPose.Api
         }
 
         /// <summary>
+        /// searches accurate pose By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>AccuratePose</returns>
+        public AccuratePose SearchAccuratePose (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+             ApiResponse<AccuratePose> localVarResponse = SearchAccuratePoseWithHttpInfo(searchString, skip, limit);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// searches accurate pose By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>ApiResponse of AccuratePose</returns>
+        public ApiResponse<AccuratePose> SearchAccuratePoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+
+            var localVarPath = "/poses/accurate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchAccuratePose", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AccuratePose>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (AccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePose)));
+        }
+
+        /// <summary>
+        /// searches accurate pose By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of AccuratePose</returns>
+        public async System.Threading.Tasks.Task<AccuratePose> SearchAccuratePoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+             ApiResponse<AccuratePose> localVarResponse = await SearchAccuratePoseAsyncWithHttpInfo(searchString, skip, limit);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// searches accurate pose By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of ApiResponse (AccuratePose)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AccuratePose>> SearchAccuratePoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+
+            var localVarPath = "/poses/accurate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchAccuratePose", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<AccuratePose>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (AccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePose)));
+        }
+
+        /// <summary>
+        /// searches inaccurate pose By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>InaccuratePose</returns>
+        public InaccuratePose SearchInaccuratePose (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+             ApiResponse<InaccuratePose> localVarResponse = SearchInaccuratePoseWithHttpInfo(searchString, skip, limit);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// searches inaccurate pose By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>ApiResponse of InaccuratePose</returns>
+        public ApiResponse<InaccuratePose> SearchInaccuratePoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+
+            var localVarPath = "/poses/inaccurate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchInaccuratePose", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InaccuratePose>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InaccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InaccuratePose)));
+        }
+
+        /// <summary>
+        /// searches inaccurate pose By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of InaccuratePose</returns>
+        public async System.Threading.Tasks.Task<InaccuratePose> SearchInaccuratePoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+             ApiResponse<InaccuratePose> localVarResponse = await SearchInaccuratePoseAsyncWithHttpInfo(searchString, skip, limit);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// searches inaccurate pose By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+        /// </summary>
+        /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
+        /// <param name="skip">number of records to skip for pagination (optional)</param>
+        /// <param name="limit">maximum number of records to return (optional)</param>
+        /// <returns>Task of ApiResponse (InaccuratePose)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InaccuratePose>> SearchInaccuratePoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        {
+
+            var localVarPath = "/poses/inaccurate";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "application/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
+            if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
+
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("SearchInaccuratePose", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<InaccuratePose>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
+                (InaccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InaccuratePose)));
+        }
+
+        /// <summary>
         /// searches pose By passing in the appropriate options, you can search for defined semantic poses in the environment 
         /// </summary>
         /// <exception cref="KnownPose.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        public List<OneOfAccuratePoseInaccuratePose> SearchPose (string searchString = default(string), int skip = default(int), int limit = default(int))
+        /// <returns>List&lt;BasicPose&gt;</returns>
+        public List<BasicPose> SearchPose (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
-             ApiResponse<List<OneOfAccuratePoseInaccuratePose>> localVarResponse = SearchPoseWithHttpInfo(searchString, skip, limit);
+             ApiResponse<List<BasicPose>> localVarResponse = SearchPoseWithHttpInfo(searchString, skip, limit);
              return localVarResponse.Data;
         }
 
@@ -564,8 +942,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        public ApiResponse<List<OneOfAccuratePoseInaccuratePose>> SearchPoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        /// <returns>ApiResponse of List&lt;BasicPose&gt;</returns>
+        public ApiResponse<List<BasicPose>> SearchPoseWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
 
             var localVarPath = "/poses";
@@ -607,9 +985,9 @@ namespace KnownPose.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<OneOfAccuratePoseInaccuratePose>>(localVarStatusCode,
+            return new ApiResponse<List<BasicPose>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<OneOfAccuratePoseInaccuratePose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OneOfAccuratePoseInaccuratePose>)));
+                (List<BasicPose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BasicPose>)));
         }
 
         /// <summary>
@@ -619,10 +997,10 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of List&lt;OneOfAccuratePoseInaccuratePose&gt;</returns>
-        public async System.Threading.Tasks.Task<List<OneOfAccuratePoseInaccuratePose>> SearchPoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int))
+        /// <returns>Task of List&lt;BasicPose&gt;</returns>
+        public async System.Threading.Tasks.Task<List<BasicPose>> SearchPoseAsync (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
-             ApiResponse<List<OneOfAccuratePoseInaccuratePose>> localVarResponse = await SearchPoseAsyncWithHttpInfo(searchString, skip, limit);
+             ApiResponse<List<BasicPose>> localVarResponse = await SearchPoseAsyncWithHttpInfo(searchString, skip, limit);
              return localVarResponse.Data;
 
         }
@@ -634,8 +1012,8 @@ namespace KnownPose.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;OneOfAccuratePoseInaccuratePose&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<OneOfAccuratePoseInaccuratePose>>> SearchPoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
+        /// <returns>Task of ApiResponse (List&lt;BasicPose&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<BasicPose>>> SearchPoseAsyncWithHttpInfo (string searchString = default(string), int skip = default(int), int limit = default(int))
         {
 
             var localVarPath = "/poses";
@@ -677,9 +1055,9 @@ namespace KnownPose.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<OneOfAccuratePoseInaccuratePose>>(localVarStatusCode,
+            return new ApiResponse<List<BasicPose>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<OneOfAccuratePoseInaccuratePose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<OneOfAccuratePoseInaccuratePose>)));
+                (List<BasicPose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<BasicPose>)));
         }
 
     }

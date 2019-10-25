@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**AddPose**](DevelopersApi.md#addpose) | **POST** /poses | adds a pose item
 [**PosesIdDelete**](DevelopersApi.md#posesiddelete) | **DELETE** /poses/{id} | deletes a pose item
+[**SearchAccuratePose**](DevelopersApi.md#searchaccuratepose) | **GET** /poses/accurate | searches accurate pose
+[**SearchInaccuratePose**](DevelopersApi.md#searchinaccuratepose) | **GET** /poses/inaccurate | searches inaccurate pose
 [**SearchPose**](DevelopersApi.md#searchpose) | **GET** /poses | searches pose
 
 
@@ -167,9 +169,169 @@ No authorization required
 [[Back to README]](../README.md)
 
 
+## SearchAccuratePose
+
+> AccuratePose SearchAccuratePose (string searchString = null, int skip = null, int limit = null)
+
+searches accurate pose
+
+By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
+
+namespace Example
+{
+    public class SearchAccuratePoseExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0";
+            var apiInstance = new DevelopersApi(Configuration.Default);
+            var searchString = searchString_example;  // string | pass an optional search string for looking up a pose (optional) 
+            var skip = 56;  // int | number of records to skip for pagination (optional) 
+            var limit = 56;  // int | maximum number of records to return (optional) 
+
+            try
+            {
+                // searches accurate pose
+                AccuratePose result = apiInstance.SearchAccuratePose(searchString, skip, limit);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DevelopersApi.SearchAccuratePose: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchString** | **string**| pass an optional search string for looking up a pose | [optional] 
+ **skip** | **int**| number of records to skip for pagination | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+
+### Return type
+
+[**AccuratePose**](AccuratePose.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | search results matching criteria |  -  |
+| **400** | bad input parameter |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
+## SearchInaccuratePose
+
+> InaccuratePose SearchInaccuratePose (string searchString = null, int skip = null, int limit = null)
+
+searches inaccurate pose
+
+By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using KnownPose.Api;
+using KnownPose.Client;
+using KnownPose.Model;
+
+namespace Example
+{
+    public class SearchInaccuratePoseExample
+    {
+        public static void Main()
+        {
+            Configuration.Default.BasePath = "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0";
+            var apiInstance = new DevelopersApi(Configuration.Default);
+            var searchString = searchString_example;  // string | pass an optional search string for looking up a pose (optional) 
+            var skip = 56;  // int | number of records to skip for pagination (optional) 
+            var limit = 56;  // int | maximum number of records to return (optional) 
+
+            try
+            {
+                // searches inaccurate pose
+                InaccuratePose result = apiInstance.SearchInaccuratePose(searchString, skip, limit);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException e)
+            {
+                Debug.Print("Exception when calling DevelopersApi.SearchInaccuratePose: " + e.Message );
+                Debug.Print("Status Code: "+ e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchString** | **string**| pass an optional search string for looking up a pose | [optional] 
+ **skip** | **int**| number of records to skip for pagination | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+
+### Return type
+
+[**InaccuratePose**](InaccuratePose.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | search results matching criteria |  -  |
+| **400** | bad input parameter |  -  |
+
+[[Back to top]](#)
+[[Back to API list]](../README.md#documentation-for-api-endpoints)
+[[Back to Model list]](../README.md#documentation-for-models)
+[[Back to README]](../README.md)
+
+
 ## SearchPose
 
-> List&lt;OneOfAccuratePoseInaccuratePose&gt; SearchPose (string searchString = null, int skip = null, int limit = null)
+> List&lt;BasicPose&gt; SearchPose (string searchString = null, int skip = null, int limit = null)
 
 searches pose
 
@@ -199,7 +361,7 @@ namespace Example
             try
             {
                 // searches pose
-                List<OneOfAccuratePoseInaccuratePose> result = apiInstance.SearchPose(searchString, skip, limit);
+                List<BasicPose> result = apiInstance.SearchPose(searchString, skip, limit);
                 Debug.WriteLine(result);
             }
             catch (ApiException e)
@@ -224,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;OneOfAccuratePoseInaccuratePose&gt;**](OneOfAccuratePoseInaccuratePose.md)
+[**List&lt;BasicPose&gt;**](BasicPose.md)
 
 ### Authorization
 

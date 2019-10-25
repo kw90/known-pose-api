@@ -81,7 +81,7 @@ Contact: Kai.Waelti@dfki.de
   <Import Project="$(MsBuildToolsPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
       <ProjectReference Include="..\KnownPose\KnownPose.csproj">
-          <Project>{F6F52BB4-7227-4B1F-AA66-98CFC280757B}</Project>
+          <Project>{69F8DBA3-7B27-4866-895F-963A9F070024}</Project>
           <Name>KnownPose</Name>
       </ProjectReference>
   </ItemGroup>

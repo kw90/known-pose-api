@@ -12,7 +12,7 @@ Contact: Kai.Waelti@dfki.de
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F6F52BB4-7227-4B1F-AA66-98CFC280757B}</ProjectGuid>
+    <ProjectGuid>{69F8DBA3-7B27-4866-895F-963A9F070024}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KnownPose</RootNamespace>

@@ -1,7 +1,7 @@
 /* 
  * Known Pose API
  *
- * Get and set (accurate) semantic poses for an environment.
+ * Define and retrieve (accurate) semantic poses in a 2D environment.
  *
  * The version of the OpenAPI document: 1.1.0
  * Contact: Kai.Waelti@dfki.de

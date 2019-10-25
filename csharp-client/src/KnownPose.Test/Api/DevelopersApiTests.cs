@@ -1,7 +1,7 @@
 /* 
  * Known Pose API
  *
- * Get and set (accurate) semantic poses for an environment.
+ * Define and retrieve (accurate) semantic poses in a 2D environment.
  *
  * The version of the OpenAPI document: 1.1.0
  * Contact: Kai.Waelti@dfki.de
@@ -76,6 +76,46 @@ namespace KnownPose.Test
         }
         
         /// <summary>
+        /// Test PosesIdDelete
+        /// </summary>
+        [Test]
+        public void PosesIdDeleteTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.PosesIdDelete(id);
+            //Assert.IsInstanceOf(typeof(InlineResponse200), response, "response is InlineResponse200");
+        }
+        
+        /// <summary>
+        /// Test SearchAccuratePose
+        /// </summary>
+        [Test]
+        public void SearchAccuratePoseTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string searchString = null;
+            //int skip = null;
+            //int limit = null;
+            //var response = instance.SearchAccuratePose(searchString, skip, limit);
+            //Assert.IsInstanceOf(typeof(AccuratePose), response, "response is AccuratePose");
+        }
+        
+        /// <summary>
+        /// Test SearchInaccuratePose
+        /// </summary>
+        [Test]
+        public void SearchInaccuratePoseTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string searchString = null;
+            //int skip = null;
+            //int limit = null;
+            //var response = instance.SearchInaccuratePose(searchString, skip, limit);
+            //Assert.IsInstanceOf(typeof(InaccuratePose), response, "response is InaccuratePose");
+        }
+        
+        /// <summary>
         /// Test SearchPose
         /// </summary>
         [Test]
@@ -86,7 +126,7 @@ namespace KnownPose.Test
             //int skip = null;
             //int limit = null;
             //var response = instance.SearchPose(searchString, skip, limit);
-            //Assert.IsInstanceOf(typeof(List<OneOfAccuratePoseInaccuratePose>), response, "response is List<OneOfAccuratePoseInaccuratePose>");
+            //Assert.IsInstanceOf(typeof(List<BasicPose>), response, "response is List<BasicPose>");
         }
         
     }
