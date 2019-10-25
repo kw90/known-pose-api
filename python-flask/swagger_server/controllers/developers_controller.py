@@ -2,7 +2,7 @@ import connexion
 import six
 
 from swagger_server.models.accurate_pose import AccuratePose  # noqa: E501
-from swagger_server.models.all_poses import AllPoses  # noqa: E501
+from swagger_server.models.any_poses import AnyPoses  # noqa: E501
 from swagger_server.models.basic_pose import BasicPose  # noqa: E501
 from swagger_server.models.inaccurate_pose import InaccuratePose  # noqa: E501
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
@@ -83,6 +83,6 @@ def search_pose(search_string=None, skip=None, limit=None):  # noqa: E501
     :param limit: maximum number of records to return
     :type limit: int
 
-    :rtype: AllPoses
+    :rtype: AnyPoses
     """
     return 'do some magic!'
