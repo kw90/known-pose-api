@@ -23,7 +23,7 @@ class TestDevelopersController(BaseTestCase):
         """
         body = BasicPose()
         response = self.client.open(
-            '/kw90/known-pose-api/1.1.0/poses',
+            '/kw90/known-pose-api/1.2.0/poses',
             method='POST',
             data=json.dumps(body),
             content_type='application/json')
@@ -36,7 +36,7 @@ class TestDevelopersController(BaseTestCase):
         deletes a pose item
         """
         response = self.client.open(
-            '/kw90/known-pose-api/1.1.0/poses/{id}'.format(id='id_example'),
+            '/kw90/known-pose-api/1.2.0/poses/{id}'.format(id='id_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -50,7 +50,7 @@ class TestDevelopersController(BaseTestCase):
                         ('skip', 1),
                         ('limit', 50)]
         response = self.client.open(
-            '/kw90/known-pose-api/1.1.0/poses/accurate',
+            '/kw90/known-pose-api/1.2.0/poses/accurate',
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -65,7 +65,7 @@ class TestDevelopersController(BaseTestCase):
                         ('skip', 1),
                         ('limit', 50)]
         response = self.client.open(
-            '/kw90/known-pose-api/1.1.0/poses/inaccurate',
+            '/kw90/known-pose-api/1.2.0/poses/inaccurate',
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -80,7 +80,7 @@ class TestDevelopersController(BaseTestCase):
                         ('skip', 1),
                         ('limit', 50)]
         response = self.client.open(
-            '/kw90/known-pose-api/1.1.0/poses',
+            '/kw90/known-pose-api/1.2.0/poses',
             method='GET',
             query_string=query_string)
         self.assert200(response,
