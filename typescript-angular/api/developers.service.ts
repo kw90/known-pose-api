@@ -18,7 +18,7 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 import { Observable }                                        from 'rxjs';
 
 import { AccuratePose } from '../model/accuratePose';
-import { AllPoses } from '../model/allPoses';
+import { AnyPoses } from '../model/anyPoses';
 import { BasicPose } from '../model/basicPose';
 import { InaccuratePose } from '../model/inaccuratePose';
 import { InlineResponse200 } from '../model/inlineResponse200';
@@ -260,9 +260,9 @@ export class DevelopersService {
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'body', reportProgress?: boolean): Observable<AllPoses>;
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AllPoses>>;
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AllPoses>>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'body', reportProgress?: boolean): Observable<AnyPoses>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AnyPoses>>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AnyPoses>>;
     public searchPose(searchString?: string, skip?: number, limit?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
 
 
@@ -294,7 +294,7 @@ export class DevelopersService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.get<AllPoses>(`${this.basePath}/poses`,
+        return this.httpClient.get<AnyPoses>(`${this.basePath}/poses`,
             {
                 params: queryParameters,
                 withCredentials: this.configuration.withCredentials,

@@ -1,5 +1,6 @@
 export * from './accuratePose';
-export * from './allPoses';
+export * from './anyOfAnyPosesItems';
+export * from './anyPoses';
 export * from './basicPose';
 export * from './inaccuratePose';
 export * from './inlineResponse200';
