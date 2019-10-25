@@ -5,10 +5,8 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from swagger_server.models.accurate_pose import AccuratePose  # noqa: E501
 from swagger_server.models.any_poses import AnyPoses  # noqa: E501
 from swagger_server.models.basic_pose import BasicPose  # noqa: E501
-from swagger_server.models.inaccurate_pose import InaccuratePose  # noqa: E501
 from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
 from swagger_server.test import BaseTestCase
 
@@ -41,36 +39,6 @@ class TestDevelopersController(BaseTestCase):
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
 
-    def test_search_accurate_pose(self):
-        """Test case for search_accurate_pose
-
-        searches accurate pose
-        """
-        query_string = [('search_string', 'search_string_example'),
-                        ('skip', 1),
-                        ('limit', 50)]
-        response = self.client.open(
-            '/kw90/known-pose-api/1.2.0/poses/accurate',
-            method='GET',
-            query_string=query_string)
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
-    def test_search_inaccurate_pose(self):
-        """Test case for search_inaccurate_pose
-
-        searches inaccurate pose
-        """
-        query_string = [('search_string', 'search_string_example'),
-                        ('skip', 1),
-                        ('limit', 50)]
-        response = self.client.open(
-            '/kw90/known-pose-api/1.2.0/poses/inaccurate',
-            method='GET',
-            query_string=query_string)
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-
     def test_search_pose(self):
         """Test case for search_pose
 
@@ -78,7 +46,8 @@ class TestDevelopersController(BaseTestCase):
         """
         query_string = [('search_string', 'search_string_example'),
                         ('skip', 1),
-                        ('limit', 50)]
+                        ('limit', 50),
+                        ('is_accurate_pose', true)]
         response = self.client.open(
             '/kw90/known-pose-api/1.2.0/poses',
             method='GET',

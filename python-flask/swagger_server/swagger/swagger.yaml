@@ -55,6 +55,14 @@ paths:
           minimum: 0
           type: integer
           format: int32
+      - name: isAccuratePose
+        in: query
+        description: filter by pose accuracy
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: boolean
       responses:
         200:
           description: search results matching criteria
@@ -136,108 +144,13 @@ paths:
         503:
           description: Service Unavailable. Please try again later.
       x-openapi-router-controller: swagger_server.controllers.developers_controller
-  /poses/accurate:
-    get:
-      tags:
-      - developers
-      summary: searches accurate pose
-      description: |
-        By passing in the appropriate options, you can search for
-        defined accurate semantic poses in the environment
-      operationId: search_accurate_pose
-      parameters:
-      - name: searchString
-        in: query
-        description: pass an optional search string for looking up a pose
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: skip
-        in: query
-        description: number of records to skip for pagination
-        required: false
-        style: form
-        explode: true
-        schema:
-          minimum: 0
-          type: integer
-          format: int32
-      - name: limit
-        in: query
-        description: maximum number of records to return
-        required: false
-        style: form
-        explode: true
-        schema:
-          maximum: 50.0
-          minimum: 0
-          type: integer
-          format: int32
-      responses:
-        200:
-          description: search results matching criteria
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/AccuratePose'
-        400:
-          description: bad input parameter
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
-  /poses/inaccurate:
-    get:
-      tags:
-      - developers
-      summary: searches inaccurate pose
-      description: |
-        By passing in the appropriate options, you can search for
-        defined inaccurate semantic poses in the environment
-      operationId: search_inaccurate_pose
-      parameters:
-      - name: searchString
-        in: query
-        description: pass an optional search string for looking up a pose
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: string
-      - name: skip
-        in: query
-        description: number of records to skip for pagination
-        required: false
-        style: form
-        explode: true
-        schema:
-          minimum: 0
-          type: integer
-          format: int32
-      - name: limit
-        in: query
-        description: maximum number of records to return
-        required: false
-        style: form
-        explode: true
-        schema:
-          maximum: 50.0
-          minimum: 0
-          type: integer
-          format: int32
-      responses:
-        200:
-          description: search results matching criteria
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/InaccuratePose'
-        400:
-          description: bad input parameter
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
 components:
   schemas:
     AnyPoses:
+      title: Any Poses
       type: array
+      description: |
+        Workaround Schema to allow sending different pose types in an array as a response.
       items:
         anyOf:
         - $ref: '#/components/schemas/BasicPose'
@@ -247,7 +160,7 @@ components:
     AccuratePose:
       allOf:
       - $ref: '#/components/schemas/InaccuratePose'
-      - title: A unique and stamped accurate Pose in free space
+      - title: Accurate Pose
         required:
         - reference_scan
         type: object
@@ -274,10 +187,11 @@ components:
               0.944 0.29474 0 4.2108e+06
               0.98111 0.24247 0 4.2108e+06
               ...
+        description: A unique and stamped accurate Pose in free space.
     InaccuratePose:
       allOf:
       - $ref: '#/components/schemas/BasicPose'
-      - title: A unique and stamped inaccurate Pose in free space
+      - title: Inaccurate Pose
         required:
         - id
         - taken_at
@@ -290,8 +204,9 @@ components:
           taken_at:
             type: string
             format: date-time
+        description: A unique and stamped inaccurate Pose in free space.
     BasicPose:
-      title: An basic Pose in free space composed of position and orientation
+      title: Basic Pose
       required:
       - name
       - orientation
@@ -305,8 +220,9 @@ components:
           $ref: '#/components/schemas/Position'
         orientation:
           $ref: '#/components/schemas/Orientation'
+      description: An basic Pose in free space composed of position and orientation.
     Position:
-      title: Position of a point in free space
+      title: Point Position
       required:
       - x
       - y
@@ -321,8 +237,9 @@ components:
         z:
           type: number
           format: double
+      description: Position of a point in free space.
     Orientation:
-      title: Orientation in free space in quaternion form
+      title: Orientation Quaternion
       required:
       - w
       - x
@@ -341,6 +258,7 @@ components:
         w:
           type: number
           format: double
+      description: Orientation in free space in quaternion form.
     inline_response_200:
       required:
       - deleted
