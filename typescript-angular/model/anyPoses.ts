@@ -11,5 +11,8 @@
  */import { AnyOfAnyPosesItems } from './anyOfAnyPosesItems';
 
 
+/**
+ * Workaround Schema to allow sending different pose types in an array as a response. 
+ */
 export interface AnyPoses extends Array<AnyOfAnyPosesItems> { 
 }

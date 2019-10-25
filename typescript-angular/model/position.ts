@@ -10,6 +10,9 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Position of a point in free space.
+ */
 export interface Position { 
     x: number;
     y: number;

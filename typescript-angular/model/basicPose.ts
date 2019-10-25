@@ -12,6 +12,9 @@
 import { Position } from './position';
 
 
+/**
+ * An basic Pose in free space composed of position and orientation.
+ */
 export interface BasicPose { 
     name: string;
     position: Position;

@@ -10,6 +10,9 @@
  * Do not edit the class manually.
  */
 
+/**
+ * Orientation in free space in quaternion form.
+ */
 export interface Orientation { 
     x: number;
     y: number;

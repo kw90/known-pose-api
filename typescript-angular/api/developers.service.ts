@@ -17,10 +17,8 @@ import { CustomHttpUrlEncodingCodec }                        from '../encoder';
 
 import { Observable }                                        from 'rxjs';
 
-import { AccuratePose } from '../model/accuratePose';
 import { AnyPoses } from '../model/anyPoses';
 import { BasicPose } from '../model/basicPose';
-import { InaccuratePose } from '../model/inaccuratePose';
 import { InlineResponse200 } from '../model/inlineResponse200';
 
 import { BASE_PATH, COLLECTION_FORMATS }                     from '../variables';
@@ -144,126 +142,20 @@ export class DevelopersService {
     }
 
     /**
-     * searches accurate pose
-     * By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
-     * @param searchString pass an optional search string for looking up a pose
-     * @param skip number of records to skip for pagination
-     * @param limit maximum number of records to return
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public searchAccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'body', reportProgress?: boolean): Observable<AccuratePose>;
-    public searchAccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AccuratePose>>;
-    public searchAccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AccuratePose>>;
-    public searchAccuratePose(searchString?: string, skip?: number, limit?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (searchString !== undefined && searchString !== null) {
-            queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (skip !== undefined && skip !== null) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined && limit !== null) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<AccuratePose>(`${this.basePath}/poses/accurate`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
-     * searches inaccurate pose
-     * By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
-     * @param searchString pass an optional search string for looking up a pose
-     * @param skip number of records to skip for pagination
-     * @param limit maximum number of records to return
-     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
-     * @param reportProgress flag to report request and response progress.
-     */
-    public searchInaccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'body', reportProgress?: boolean): Observable<InaccuratePose>;
-    public searchInaccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<InaccuratePose>>;
-    public searchInaccuratePose(searchString?: string, skip?: number, limit?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<InaccuratePose>>;
-    public searchInaccuratePose(searchString?: string, skip?: number, limit?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
-
-
-
-
-        let queryParameters = new HttpParams({encoder: new CustomHttpUrlEncodingCodec()});
-        if (searchString !== undefined && searchString !== null) {
-            queryParameters = queryParameters.set('searchString', <any>searchString);
-        }
-        if (skip !== undefined && skip !== null) {
-            queryParameters = queryParameters.set('skip', <any>skip);
-        }
-        if (limit !== undefined && limit !== null) {
-            queryParameters = queryParameters.set('limit', <any>limit);
-        }
-
-        let headers = this.defaultHeaders;
-
-        // to determine the Accept header
-        let httpHeaderAccepts: string[] = [
-            'application/json'
-        ];
-        const httpHeaderAcceptSelected: string | undefined = this.configuration.selectHeaderAccept(httpHeaderAccepts);
-        if (httpHeaderAcceptSelected != undefined) {
-            headers = headers.set('Accept', httpHeaderAcceptSelected);
-        }
-
-        // to determine the Content-Type header
-        const consumes: string[] = [
-        ];
-
-        return this.httpClient.get<InaccuratePose>(`${this.basePath}/poses/inaccurate`,
-            {
-                params: queryParameters,
-                withCredentials: this.configuration.withCredentials,
-                headers: headers,
-                observe: observe,
-                reportProgress: reportProgress
-            }
-        );
-    }
-
-    /**
      * searches pose
      * By passing in the appropriate options, you can search for defined semantic poses in the environment 
      * @param searchString pass an optional search string for looking up a pose
      * @param skip number of records to skip for pagination
      * @param limit maximum number of records to return
+     * @param isAccuratePose filter by pose accuracy
      * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
      * @param reportProgress flag to report request and response progress.
      */
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'body', reportProgress?: boolean): Observable<AnyPoses>;
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AnyPoses>>;
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AnyPoses>>;
-    public searchPose(searchString?: string, skip?: number, limit?: number, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+    public searchPose(searchString?: string, skip?: number, limit?: number, isAccuratePose?: boolean, observe?: 'body', reportProgress?: boolean): Observable<AnyPoses>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, isAccuratePose?: boolean, observe?: 'response', reportProgress?: boolean): Observable<HttpResponse<AnyPoses>>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, isAccuratePose?: boolean, observe?: 'events', reportProgress?: boolean): Observable<HttpEvent<AnyPoses>>;
+    public searchPose(searchString?: string, skip?: number, limit?: number, isAccuratePose?: boolean, observe: any = 'body', reportProgress: boolean = false ): Observable<any> {
+
 
 
 
@@ -277,6 +169,9 @@ export class DevelopersService {
         }
         if (limit !== undefined && limit !== null) {
             queryParameters = queryParameters.set('limit', <any>limit);
+        }
+        if (isAccuratePose !== undefined && isAccuratePose !== null) {
+            queryParameters = queryParameters.set('isAccuratePose', <any>isAccuratePose);
         }
 
         let headers = this.defaultHeaders;
