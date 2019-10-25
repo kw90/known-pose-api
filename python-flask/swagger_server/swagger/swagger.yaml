@@ -63,12 +63,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  anyOf:
-                  - $ref: '#/components/schemas/AccuratePose'
-                  - $ref: '#/components/schemas/InaccuratePose'
-                x-content-type: application/json
+                $ref: '#/components/schemas/AllPoses'
         400:
           description: bad input parameter
       x-openapi-router-controller: swagger_server.controllers.developers_controller
@@ -143,8 +138,110 @@ paths:
         503:
           description: Service Unavailable. Please try again later.
       x-openapi-router-controller: swagger_server.controllers.developers_controller
+  /poses/accurate:
+    get:
+      tags:
+      - developers
+      summary: searches accurate pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined accurate semantic poses in the environment
+      operationId: search_accurate_pose
+      parameters:
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccuratePose'
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
+  /poses/inaccurate:
+    get:
+      tags:
+      - developers
+      summary: searches inaccurate pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined inaccurate semantic poses in the environment
+      operationId: search_inaccurate_pose
+      parameters:
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InaccuratePose'
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
 components:
   schemas:
+    AllPoses:
+      type: array
+      items:
+        $ref: '#/components/schemas/BasicPose'
     AccuratePose:
       allOf:
       - $ref: '#/components/schemas/InaccuratePose'
@@ -203,6 +300,17 @@ components:
           $ref: '#/components/schemas/Position'
         orientation:
           $ref: '#/components/schemas/Orientation'
+      example:
+        orientation:
+          w: 7.061401241503109
+          x: 5.962133916683182
+          y: 5.637376656633329
+          z: 2.3021358869347655
+        name: Bottle Cap Workbench
+        position:
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
     Position:
       required:
       - x
@@ -218,6 +326,10 @@ components:
         z:
           type: number
           format: double
+      example:
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
     Orientation:
       required:
       - w
@@ -237,6 +349,11 @@ components:
         w:
           type: number
           format: double
+      example:
+        w: 7.061401241503109
+        x: 5.962133916683182
+        y: 5.637376656633329
+        z: 2.3021358869347655
     inline_response_200:
       required:
       - deleted
