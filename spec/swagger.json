@@ -195,7 +195,10 @@
             "$ref" : "#/components/schemas/InaccuratePose"
           }, {
             "$ref" : "#/components/schemas/AccuratePose"
-          } ]
+          } ],
+          "discriminator" : {
+            "propertyName" : "poseType"
+          }
         }
       },
       "AccuratePose" : {
