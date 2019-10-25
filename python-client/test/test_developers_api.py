@@ -3,7 +3,7 @@
 """
     Known Pose API
 
-    Get and set (accurate) semantic poses for an environment.  # noqa: E501
+    Define and retrieve (accurate) semantic poses in a 2D environment.  # noqa: E501
 
     The version of the OpenAPI document: 1.1.0
     Contact: Kai.Waelti@dfki.de
@@ -15,16 +15,16 @@ from __future__ import absolute_import
 
 import unittest
 
-import known_pose
-from known_pose.api.developers_api import DevelopersApi  # noqa: E501
-from known_pose.rest import ApiException
+import known_pose_client
+from known_pose_client.api.developers_api import DevelopersApi  # noqa: E501
+from known_pose_client.rest import ApiException
 
 
 class TestDevelopersApi(unittest.TestCase):
     """DevelopersApi unit test stubs"""
 
     def setUp(self):
-        self.api = known_pose.api.developers_api.DevelopersApi()  # noqa: E501
+        self.api = known_pose_client.api.developers_api.DevelopersApi()  # noqa: E501
 
     def tearDown(self):
         pass
@@ -33,6 +33,27 @@ class TestDevelopersApi(unittest.TestCase):
         """Test case for add_pose
 
         adds a pose item  # noqa: E501
+        """
+        pass
+
+    def test_poses_id_delete(self):
+        """Test case for poses_id_delete
+
+        deletes a pose item  # noqa: E501
+        """
+        pass
+
+    def test_search_accurate_pose(self):
+        """Test case for search_accurate_pose
+
+        searches accurate pose  # noqa: E501
+        """
+        pass
+
+    def test_search_inaccurate_pose(self):
+        """Test case for search_inaccurate_pose
+
+        searches inaccurate pose  # noqa: E501
         """
         pass
 

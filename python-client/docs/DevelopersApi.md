@@ -1,4 +1,4 @@
-# known_pose.DevelopersApi
+# known_pose_client.DevelopersApi
 
 All URIs are relative to *https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0*
 
@@ -6,6 +6,8 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**add_pose**](DevelopersApi.md#add_pose) | **POST** /poses | adds a pose item
 [**poses_id_delete**](DevelopersApi.md#poses_id_delete) | **DELETE** /poses/{id} | deletes a pose item
+[**search_accurate_pose**](DevelopersApi.md#search_accurate_pose) | **GET** /poses/accurate | searches accurate pose
+[**search_inaccurate_pose**](DevelopersApi.md#search_inaccurate_pose) | **GET** /poses/inaccurate | searches inaccurate pose
 [**search_pose**](DevelopersApi.md#search_pose) | **GET** /poses | searches pose
 
 
@@ -21,13 +23,13 @@ Adds an accurate or inaccurate pose to the system. Add current pose (without pos
 ```python
 from __future__ import print_function
 import time
-import known_pose
-from known_pose.rest import ApiException
+import known_pose_client
+from known_pose_client.rest import ApiException
 from pprint import pprint
 
 # Create an instance of the API class
-api_instance = known_pose.DevelopersApi()
-basic_pose = known_pose.BasicPose() # BasicPose | Optional pose item to add (optional)
+api_instance = known_pose_client.DevelopersApi()
+basic_pose = known_pose_client.BasicPose() # BasicPose | Optional pose item to add (optional)
 
 try:
     # adds a pose item
@@ -76,12 +78,12 @@ Deletes an accurate or inaccurate pose from the system using the `uuid`.
 ```python
 from __future__ import print_function
 import time
-import known_pose
-from known_pose.rest import ApiException
+import known_pose_client
+from known_pose_client.rest import ApiException
 from pprint import pprint
 
 # Create an instance of the API class
-api_instance = known_pose.DevelopersApi()
+api_instance = known_pose_client.DevelopersApi()
 id = 'id_example' # str | uuid
 
 try:
@@ -124,8 +126,126 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **search_accurate_pose**
+> AccuratePose search_accurate_pose(search_string=search_string, skip=skip, limit=limit)
+
+searches accurate pose
+
+By passing in the appropriate options, you can search for defined accurate semantic poses in the environment 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import known_pose_client
+from known_pose_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = known_pose_client.DevelopersApi()
+search_string = 'search_string_example' # str | pass an optional search string for looking up a pose (optional)
+skip = 56 # int | number of records to skip for pagination (optional)
+limit = 56 # int | maximum number of records to return (optional)
+
+try:
+    # searches accurate pose
+    api_response = api_instance.search_accurate_pose(search_string=search_string, skip=skip, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DevelopersApi->search_accurate_pose: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search_string** | **str**| pass an optional search string for looking up a pose | [optional] 
+ **skip** | **int**| number of records to skip for pagination | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+
+### Return type
+
+[**AccuratePose**](AccuratePose.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | search results matching criteria |  -  |
+**400** | bad input parameter |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **search_inaccurate_pose**
+> InaccuratePose search_inaccurate_pose(search_string=search_string, skip=skip, limit=limit)
+
+searches inaccurate pose
+
+By passing in the appropriate options, you can search for defined inaccurate semantic poses in the environment 
+
+### Example
+
+```python
+from __future__ import print_function
+import time
+import known_pose_client
+from known_pose_client.rest import ApiException
+from pprint import pprint
+
+# Create an instance of the API class
+api_instance = known_pose_client.DevelopersApi()
+search_string = 'search_string_example' # str | pass an optional search string for looking up a pose (optional)
+skip = 56 # int | number of records to skip for pagination (optional)
+limit = 56 # int | maximum number of records to return (optional)
+
+try:
+    # searches inaccurate pose
+    api_response = api_instance.search_inaccurate_pose(search_string=search_string, skip=skip, limit=limit)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DevelopersApi->search_inaccurate_pose: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **search_string** | **str**| pass an optional search string for looking up a pose | [optional] 
+ **skip** | **int**| number of records to skip for pagination | [optional] 
+ **limit** | **int**| maximum number of records to return | [optional] 
+
+### Return type
+
+[**InaccuratePose**](InaccuratePose.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | search results matching criteria |  -  |
+**400** | bad input parameter |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **search_pose**
-> list[OneOfAccuratePoseInaccuratePose] search_pose(search_string=search_string, skip=skip, limit=limit)
+> list[BasicPose] search_pose(search_string=search_string, skip=skip, limit=limit)
 
 searches pose
 
@@ -136,12 +256,12 @@ By passing in the appropriate options, you can search for defined semantic poses
 ```python
 from __future__ import print_function
 import time
-import known_pose
-from known_pose.rest import ApiException
+import known_pose_client
+from known_pose_client.rest import ApiException
 from pprint import pprint
 
 # Create an instance of the API class
-api_instance = known_pose.DevelopersApi()
+api_instance = known_pose_client.DevelopersApi()
 search_string = 'search_string_example' # str | pass an optional search string for looking up a pose (optional)
 skip = 56 # int | number of records to skip for pagination (optional)
 limit = 56 # int | maximum number of records to return (optional)
@@ -164,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**list[OneOfAccuratePoseInaccuratePose]**](OneOfAccuratePoseInaccuratePose.md)
+[**list[BasicPose]**](BasicPose.md)
 
 ### Authorization
 

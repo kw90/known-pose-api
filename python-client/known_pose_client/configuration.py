@@ -77,7 +77,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
         self.logger = {}
         """Logging Settings
         """
-        self.logger["package_logger"] = logging.getLogger("known_pose")
+        self.logger["package_logger"] = logging.getLogger("known_pose_client")
         self.logger["urllib3_logger"] = logging.getLogger("urllib3")
         self.logger_format = '%(asctime)s %(levelname)s %(message)s'
         """Log format
@@ -257,7 +257,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.1.0\n"\
-               "SDK Package Version: 1.1.0".\
+               "SDK Package Version: 1.1.2".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self):
@@ -272,7 +272,7 @@ class Configuration(six.with_metaclass(TypeWithDefault, object)):
             },
             {
                 'url': "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0",
-                'description': "API Endpoint on Mobility Base Robot.",
+                'description': "API Endpoint on Mobility Base Robot",
             }
         ]
 

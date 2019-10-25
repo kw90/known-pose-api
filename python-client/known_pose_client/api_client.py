@@ -23,10 +23,10 @@ import tempfile
 import six
 from six.moves.urllib.parse import quote
 
-from known_pose.configuration import Configuration
-import known_pose.models
-from known_pose import rest
-from known_pose.exceptions import ApiValueError
+from known_pose_client.configuration import Configuration
+import known_pose_client.models
+from known_pose_client import rest
+from known_pose_client.exceptions import ApiValueError
 
 
 class ApiClient(object):
@@ -77,7 +77,7 @@ class ApiClient(object):
             self.default_headers[header_name] = header_value
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'OpenAPI-Generator/1.1.0/python'
+        self.user_agent = 'OpenAPI-Generator/1.1.2/python'
 
     def __del__(self):
         if self._pool:
@@ -278,7 +278,7 @@ class ApiClient(object):
             if klass in self.NATIVE_TYPES_MAPPING:
                 klass = self.NATIVE_TYPES_MAPPING[klass]
             else:
-                klass = getattr(known_pose.models, klass)
+                klass = getattr(known_pose_client.models, klass)
 
         if klass in self.PRIMITIVE_TYPES:
             return self.__deserialize_primitive(data, klass)

@@ -3,7 +3,7 @@
 """
     Known Pose API
 
-    Get and set (accurate) semantic poses for an environment.  # noqa: E501
+    Define and retrieve (accurate) semantic poses in a 2D environment.  # noqa: E501
 
     The version of the OpenAPI document: 1.1.0
     Contact: Kai.Waelti@dfki.de
@@ -15,9 +15,9 @@ from __future__ import absolute_import
 
 import unittest
 
-import known_pose
-from known_pose.models.inaccurate_pose import InaccuratePose  # noqa: E501
-from known_pose.rest import ApiException
+import known_pose_client
+from known_pose_client.models.inaccurate_pose import InaccuratePose  # noqa: E501
+from known_pose_client.rest import ApiException
 
 
 class TestInaccuratePose(unittest.TestCase):
@@ -32,7 +32,7 @@ class TestInaccuratePose(unittest.TestCase):
     def testInaccuratePose(self):
         """Test InaccuratePose"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = known_pose.models.inaccurate_pose.InaccuratePose()  # noqa: E501
+        # model = known_pose_client.models.inaccurate_pose.InaccuratePose()  # noqa: E501
         pass
 
 
