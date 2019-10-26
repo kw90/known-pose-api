@@ -225,12 +225,21 @@
           "type" : "object",
           "title" : "Inaccurate Pose",
           "description" : "A unique and stamped inaccurate Pose in free space.",
-          "required" : [ "id", "taken_at" ],
+          "required" : [ "id", "dns", "taken_at", "is_accurate" ],
           "properties" : {
             "id" : {
               "type" : "string",
               "format" : "uuid",
               "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            },
+            "dns" : {
+              "type" : "string",
+              "example" : "known-pose-bottle-cap-workbench",
+              "description" : "Unique name used to generate the uuid."
+            },
+            "is_accurate" : {
+              "type" : "boolean",
+              "example" : true
             },
             "taken_at" : {
               "type" : "string",
