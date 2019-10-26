@@ -15,11 +15,15 @@ class AccuratePose(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: str=None, taken_at: datetime=None, reference_scan: str=None):  # noqa: E501
+    def __init__(self, id: str=None, dns: str=None, is_accurate: bool=None, taken_at: datetime=None, reference_scan: str=None):  # noqa: E501
         """AccuratePose - a model defined in Swagger
 
         :param id: The id of this AccuratePose.  # noqa: E501
         :type id: str
+        :param dns: The dns of this AccuratePose.  # noqa: E501
+        :type dns: str
+        :param is_accurate: The is_accurate of this AccuratePose.  # noqa: E501
+        :type is_accurate: bool
         :param taken_at: The taken_at of this AccuratePose.  # noqa: E501
         :type taken_at: datetime
         :param reference_scan: The reference_scan of this AccuratePose.  # noqa: E501
@@ -27,16 +31,22 @@ class AccuratePose(Model):
         """
         self.swagger_types = {
             'id': str,
+            'dns': str,
+            'is_accurate': bool,
             'taken_at': datetime,
             'reference_scan': str
         }
 
         self.attribute_map = {
             'id': 'id',
+            'dns': 'dns',
+            'is_accurate': 'is_accurate',
             'taken_at': 'taken_at',
             'reference_scan': 'reference_scan'
         }
         self._id = id
+        self._dns = dns
+        self._is_accurate = is_accurate
         self._taken_at = taken_at
         self._reference_scan = reference_scan
 
@@ -73,6 +83,52 @@ class AccuratePose(Model):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def dns(self) -> str:
+        """Gets the dns of this AccuratePose.
+
+
+        :return: The dns of this AccuratePose.
+        :rtype: str
+        """
+        return self._dns
+
+    @dns.setter
+    def dns(self, dns: str):
+        """Sets the dns of this AccuratePose.
+
+
+        :param dns: The dns of this AccuratePose.
+        :type dns: str
+        """
+        if dns is None:
+            raise ValueError("Invalid value for `dns`, must not be `None`")  # noqa: E501
+
+        self._dns = dns
+
+    @property
+    def is_accurate(self) -> bool:
+        """Gets the is_accurate of this AccuratePose.
+
+
+        :return: The is_accurate of this AccuratePose.
+        :rtype: bool
+        """
+        return self._is_accurate
+
+    @is_accurate.setter
+    def is_accurate(self, is_accurate: bool):
+        """Sets the is_accurate of this AccuratePose.
+
+
+        :param is_accurate: The is_accurate of this AccuratePose.
+        :type is_accurate: bool
+        """
+        if is_accurate is None:
+            raise ValueError("Invalid value for `is_accurate`, must not be `None`")  # noqa: E501
+
+        self._is_accurate = is_accurate
 
     @property
     def taken_at(self) -> datetime:
