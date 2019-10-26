@@ -7,8 +7,6 @@ from typing import List, Dict  # noqa: F401
 
 from swagger_server.models.base_model_ import Model
 from swagger_server.models.basic_pose import BasicPose  # noqa: F401,E501
-from swagger_server.models.orientation import Orientation  # noqa: F401,E501
-from swagger_server.models.position import Position  # noqa: F401,E501
 from swagger_server import util
 
 
@@ -17,39 +15,39 @@ class InaccuratePose(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, name: str=None, position: Position=None, orientation: Orientation=None, id: str=None, taken_at: datetime=None):  # noqa: E501
+    def __init__(self, id: str=None, dns: str=None, basic_pose: BasicPose=None, is_accurate: bool=None, taken_at: datetime=None):  # noqa: E501
         """InaccuratePose - a model defined in Swagger
 
-        :param name: The name of this InaccuratePose.  # noqa: E501
-        :type name: str
-        :param position: The position of this InaccuratePose.  # noqa: E501
-        :type position: Position
-        :param orientation: The orientation of this InaccuratePose.  # noqa: E501
-        :type orientation: Orientation
         :param id: The id of this InaccuratePose.  # noqa: E501
         :type id: str
+        :param dns: The dns of this InaccuratePose.  # noqa: E501
+        :type dns: str
+        :param basic_pose: The basic_pose of this InaccuratePose.  # noqa: E501
+        :type basic_pose: BasicPose
+        :param is_accurate: The is_accurate of this InaccuratePose.  # noqa: E501
+        :type is_accurate: bool
         :param taken_at: The taken_at of this InaccuratePose.  # noqa: E501
         :type taken_at: datetime
         """
         self.swagger_types = {
-            'name': str,
-            'position': Position,
-            'orientation': Orientation,
             'id': str,
+            'dns': str,
+            'basic_pose': BasicPose,
+            'is_accurate': bool,
             'taken_at': datetime
         }
 
         self.attribute_map = {
-            'name': 'name',
-            'position': 'position',
-            'orientation': 'orientation',
             'id': 'id',
+            'dns': 'dns',
+            'basic_pose': 'basic_pose',
+            'is_accurate': 'is_accurate',
             'taken_at': 'taken_at'
         }
-        self._name = name
-        self._position = position
-        self._orientation = orientation
         self._id = id
+        self._dns = dns
+        self._basic_pose = basic_pose
+        self._is_accurate = is_accurate
         self._taken_at = taken_at
 
     @classmethod
@@ -62,75 +60,6 @@ class InaccuratePose(Model):
         :rtype: InaccuratePose
         """
         return util.deserialize_model(dikt, cls)
-
-    @property
-    def name(self) -> str:
-        """Gets the name of this InaccuratePose.
-
-
-        :return: The name of this InaccuratePose.
-        :rtype: str
-        """
-        return self._name
-
-    @name.setter
-    def name(self, name: str):
-        """Sets the name of this InaccuratePose.
-
-
-        :param name: The name of this InaccuratePose.
-        :type name: str
-        """
-        if name is None:
-            raise ValueError("Invalid value for `name`, must not be `None`")  # noqa: E501
-
-        self._name = name
-
-    @property
-    def position(self) -> Position:
-        """Gets the position of this InaccuratePose.
-
-
-        :return: The position of this InaccuratePose.
-        :rtype: Position
-        """
-        return self._position
-
-    @position.setter
-    def position(self, position: Position):
-        """Sets the position of this InaccuratePose.
-
-
-        :param position: The position of this InaccuratePose.
-        :type position: Position
-        """
-        if position is None:
-            raise ValueError("Invalid value for `position`, must not be `None`")  # noqa: E501
-
-        self._position = position
-
-    @property
-    def orientation(self) -> Orientation:
-        """Gets the orientation of this InaccuratePose.
-
-
-        :return: The orientation of this InaccuratePose.
-        :rtype: Orientation
-        """
-        return self._orientation
-
-    @orientation.setter
-    def orientation(self, orientation: Orientation):
-        """Sets the orientation of this InaccuratePose.
-
-
-        :param orientation: The orientation of this InaccuratePose.
-        :type orientation: Orientation
-        """
-        if orientation is None:
-            raise ValueError("Invalid value for `orientation`, must not be `None`")  # noqa: E501
-
-        self._orientation = orientation
 
     @property
     def id(self) -> str:
@@ -154,6 +83,77 @@ class InaccuratePose(Model):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def dns(self) -> str:
+        """Gets the dns of this InaccuratePose.
+
+        Unique name used to generate the uuid.  # noqa: E501
+
+        :return: The dns of this InaccuratePose.
+        :rtype: str
+        """
+        return self._dns
+
+    @dns.setter
+    def dns(self, dns: str):
+        """Sets the dns of this InaccuratePose.
+
+        Unique name used to generate the uuid.  # noqa: E501
+
+        :param dns: The dns of this InaccuratePose.
+        :type dns: str
+        """
+        if dns is None:
+            raise ValueError("Invalid value for `dns`, must not be `None`")  # noqa: E501
+
+        self._dns = dns
+
+    @property
+    def basic_pose(self) -> BasicPose:
+        """Gets the basic_pose of this InaccuratePose.
+
+
+        :return: The basic_pose of this InaccuratePose.
+        :rtype: BasicPose
+        """
+        return self._basic_pose
+
+    @basic_pose.setter
+    def basic_pose(self, basic_pose: BasicPose):
+        """Sets the basic_pose of this InaccuratePose.
+
+
+        :param basic_pose: The basic_pose of this InaccuratePose.
+        :type basic_pose: BasicPose
+        """
+        if basic_pose is None:
+            raise ValueError("Invalid value for `basic_pose`, must not be `None`")  # noqa: E501
+
+        self._basic_pose = basic_pose
+
+    @property
+    def is_accurate(self) -> bool:
+        """Gets the is_accurate of this InaccuratePose.
+
+
+        :return: The is_accurate of this InaccuratePose.
+        :rtype: bool
+        """
+        return self._is_accurate
+
+    @is_accurate.setter
+    def is_accurate(self, is_accurate: bool):
+        """Sets the is_accurate of this InaccuratePose.
+
+
+        :param is_accurate: The is_accurate of this InaccuratePose.
+        :type is_accurate: bool
+        """
+        if is_accurate is None:
+            raise ValueError("Invalid value for `is_accurate`, must not be `None`")  # noqa: E501
+
+        self._is_accurate = is_accurate
 
     @property
     def taken_at(self) -> datetime:

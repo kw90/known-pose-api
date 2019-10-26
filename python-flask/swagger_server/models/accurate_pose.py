@@ -15,29 +15,24 @@ class AccuratePose(Model):
 
     Do not edit the class manually.
     """
-    def __init__(self, id: str=None, taken_at: datetime=None, reference_scan: str=None):  # noqa: E501
+    def __init__(self, inaccurate_pose: InaccuratePose=None, reference_scan: str=None):  # noqa: E501
         """AccuratePose - a model defined in Swagger
 
-        :param id: The id of this AccuratePose.  # noqa: E501
-        :type id: str
-        :param taken_at: The taken_at of this AccuratePose.  # noqa: E501
-        :type taken_at: datetime
+        :param inaccurate_pose: The inaccurate_pose of this AccuratePose.  # noqa: E501
+        :type inaccurate_pose: InaccuratePose
         :param reference_scan: The reference_scan of this AccuratePose.  # noqa: E501
         :type reference_scan: str
         """
         self.swagger_types = {
-            'id': str,
-            'taken_at': datetime,
+            'inaccurate_pose': InaccuratePose,
             'reference_scan': str
         }
 
         self.attribute_map = {
-            'id': 'id',
-            'taken_at': 'taken_at',
+            'inaccurate_pose': 'inaccurate_pose',
             'reference_scan': 'reference_scan'
         }
-        self._id = id
-        self._taken_at = taken_at
+        self._inaccurate_pose = inaccurate_pose
         self._reference_scan = reference_scan
 
     @classmethod
@@ -52,50 +47,27 @@ class AccuratePose(Model):
         return util.deserialize_model(dikt, cls)
 
     @property
-    def id(self) -> str:
-        """Gets the id of this AccuratePose.
+    def inaccurate_pose(self) -> InaccuratePose:
+        """Gets the inaccurate_pose of this AccuratePose.
 
 
-        :return: The id of this AccuratePose.
-        :rtype: str
+        :return: The inaccurate_pose of this AccuratePose.
+        :rtype: InaccuratePose
         """
-        return self._id
+        return self._inaccurate_pose
 
-    @id.setter
-    def id(self, id: str):
-        """Sets the id of this AccuratePose.
+    @inaccurate_pose.setter
+    def inaccurate_pose(self, inaccurate_pose: InaccuratePose):
+        """Sets the inaccurate_pose of this AccuratePose.
 
 
-        :param id: The id of this AccuratePose.
-        :type id: str
+        :param inaccurate_pose: The inaccurate_pose of this AccuratePose.
+        :type inaccurate_pose: InaccuratePose
         """
-        if id is None:
-            raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
+        if inaccurate_pose is None:
+            raise ValueError("Invalid value for `inaccurate_pose`, must not be `None`")  # noqa: E501
 
-        self._id = id
-
-    @property
-    def taken_at(self) -> datetime:
-        """Gets the taken_at of this AccuratePose.
-
-
-        :return: The taken_at of this AccuratePose.
-        :rtype: datetime
-        """
-        return self._taken_at
-
-    @taken_at.setter
-    def taken_at(self, taken_at: datetime):
-        """Sets the taken_at of this AccuratePose.
-
-
-        :param taken_at: The taken_at of this AccuratePose.
-        :type taken_at: datetime
-        """
-        if taken_at is None:
-            raise ValueError("Invalid value for `taken_at`, must not be `None`")  # noqa: E501
-
-        self._taken_at = taken_at
+        self._inaccurate_pose = inaccurate_pose
 
     @property
     def reference_scan(self) -> str:

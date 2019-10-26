@@ -1,17 +1,24 @@
 openapi: 3.0.0
 info:
   title: Known Pose API
-  description: Define and retrieve (accurate) semantic poses in a 2D environment.
+  description: "Define and retrieve (accurate) semantic poses in a 2D environment.\
+    \ This version is a workaround for some not yet available features of the OpenAPI\
+    \ Specification v3.0 (e.g. `anyOf` as a response type and adding a  `discriminator`\
+    \ for supporting polymorphism/composition). Therefore, ATM the sub-components\
+    \ BasicPose and InaccuratePose are reference objects inside their respective parent\
+    \ model. \n"
   contact:
     name: Kai Waelti
     email: Kai.Waelti@dfki.de
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
-  version: 1.2.0
+  version: 1.1.0
 servers:
-- url: https://virtserver.swaggerhub.com/kw90/known-pose-api/1.2.0
+- url: https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0
   description: SwaggerHub API Auto Mocking
+- url: http://robot-mb-01:9092/kw90/known-pose-api/1.1.0
+  description: API Endpoint on Mobility Base Robot
 tags:
 - name: developers
   description: Operations available to developers
@@ -22,10 +29,17 @@ paths:
       - developers
       summary: searches pose
       description: |
-        By passing in the appropriate options, you can search for
-        defined semantic poses in the environment
+        By passing in the appropriate options, you can search for defined semantic poses in the environment
       operationId: search_pose
       parameters:
+      - name: id
+        in: query
+        description: optional uuid of a single pose to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
       - name: searchString
         in: query
         description: pass an optional search string for looking up a pose
@@ -55,21 +69,16 @@ paths:
           minimum: 0
           type: integer
           format: int32
-      - name: isAccuratePose
-        in: query
-        description: filter by pose accuracy
-        required: false
-        style: form
-        explode: true
-        schema:
-          type: boolean
       responses:
         200:
           description: search results matching criteria
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnyPoses'
+                type: array
+                items:
+                  $ref: '#/components/schemas/InaccuratePose'
+                x-content-type: application/json
         400:
           description: bad input parameter
       x-openapi-router-controller: swagger_server.controllers.developers_controller
@@ -144,72 +153,181 @@ paths:
         503:
           description: Service Unavailable. Please try again later.
       x-openapi-router-controller: swagger_server.controllers.developers_controller
+  /poses/accurate:
+    get:
+      tags:
+      - developers
+      summary: searches accurate pose
+      description: |
+        By passing in the appropriate options, you can search for
+        defined accurate semantic poses in the environment
+      operationId: search_accurate_pose
+      parameters:
+      - name: id
+        in: query
+        description: optional uuid of a single accurate pose to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: searchString
+        in: query
+        description: pass an optional search string for looking up a pose
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
+      - name: skip
+        in: query
+        description: number of records to skip for pagination
+        required: false
+        style: form
+        explode: true
+        schema:
+          minimum: 0
+          type: integer
+          format: int32
+      - name: limit
+        in: query
+        description: maximum number of records to return
+        required: false
+        style: form
+        explode: true
+        schema:
+          maximum: 50.0
+          minimum: 0
+          type: integer
+          format: int32
+      responses:
+        200:
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccuratePose'
+        400:
+          description: bad input parameter
+      x-openapi-router-controller: swagger_server.controllers.developers_controller
 components:
   schemas:
-    AnyPoses:
-      title: Any Poses
-      type: array
-      description: |
-        Workaround Schema to allow sending different pose types in an array as a response.
-      items:
-        anyOf:
-        - $ref: '#/components/schemas/BasicPose'
-        - $ref: '#/components/schemas/InaccuratePose'
-        - $ref: '#/components/schemas/AccuratePose'
-        x-model-name: AnyOfAnyPosesItems
     AccuratePose:
-      allOf:
-      - $ref: '#/components/schemas/InaccuratePose'
-      - title: Accurate Pose
-        required:
-        - reference_scan
-        type: object
-        properties:
-          reference_scan:
-            type: string
-            description: Contents of the reference scan assembled as point cloud data
-              following [RFC 4648 § 5](https://tools.ietf.org/html/rfc4648#section-5)
-            example: |
-              VERSION .7
-              FIELDS x y z rgb
-              SIZE 4 4 4 4
-              TYPE F F F F
-              COUNT 1 1 1 1
-              WIDTH 213
-              HEIGHT 1
-              VIEWPOINT 0 0 0 1 0 0 0
-              POINTS 213
-              DATA ascii
-              0.93773 0.33763 0 4.2108e+06
-              0.90805 0.35641 0 4.2108e+06
-              0.81915 0.32 0 4.2108e+06
-              0.97192 0.278 0 4.2108e+06
-              0.944 0.29474 0 4.2108e+06
-              0.98111 0.24247 0 4.2108e+06
-              ...
-        description: A unique and stamped accurate Pose in free space.
+      title: Accurate Pose
+      required:
+      - inaccurate_pose
+      - reference_scan
+      type: object
+      properties:
+        inaccurate_pose:
+          $ref: '#/components/schemas/InaccuratePose'
+        reference_scan:
+          type: string
+          description: Contents of the reference scan assembled as point cloud data
+            following [RFC 4648 § 5](https://tools.ietf.org/html/rfc4648#section-5)
+          example: |
+            VERSION .7
+            FIELDS x y z rgb
+            SIZE 4 4 4 4
+            TYPE F F F F
+            COUNT 1 1 1 1
+            WIDTH 213
+            HEIGHT 1
+            VIEWPOINT 0 0 0 1 0 0 0
+            POINTS 213
+            DATA ascii
+            0.93773 0.33763 0 4.2108e+06
+            0.90805 0.35641 0 4.2108e+06
+            0.81915 0.32 0 4.2108e+06
+            0.97192 0.278 0 4.2108e+06
+            0.944 0.29474 0 4.2108e+06
+            0.98111 0.24247 0 4.2108e+06
+            ...
+      description: A unique and stamped accurate Pose in free space.
+      example:
+        reference_scan: |
+          VERSION .7
+          FIELDS x y z rgb
+          SIZE 4 4 4 4
+          TYPE F F F F
+          COUNT 1 1 1 1
+          WIDTH 213
+          HEIGHT 1
+          VIEWPOINT 0 0 0 1 0 0 0
+          POINTS 213
+          DATA ascii
+          0.93773 0.33763 0 4.2108e+06
+          0.90805 0.35641 0 4.2108e+06
+          0.81915 0.32 0 4.2108e+06
+          0.97192 0.278 0 4.2108e+06
+          0.944 0.29474 0 4.2108e+06
+          0.98111 0.24247 0 4.2108e+06
+          ...
+        inaccurate_pose:
+          taken_at: 2000-01-23T04:56:07.000+00:00
+          dns: known-pose-bottle-cap-workbench
+          is_accurate: false
+          id: d290f1ee-6c54-4b01-90e6-d701748f0851
+          basic_pose:
+            orientation:
+              w: 7.061401241503109
+              x: 5.962133916683182
+              y: 5.637376656633329
+              z: 2.3021358869347655
+            name: Bottle Cap Workbench
+            position:
+              x: 0.8008281904610115
+              y: 6.027456183070403
+              z: 1.4658129805029452
     InaccuratePose:
-      allOf:
-      - $ref: '#/components/schemas/BasicPose'
-      - title: Inaccurate Pose
-        required:
-        - id
-        - taken_at
-        type: object
-        properties:
-          id:
-            type: string
-            format: uuid
-            example: d290f1ee-6c54-4b01-90e6-d701748f0851
-          taken_at:
-            type: string
-            format: date-time
-        description: A unique and stamped inaccurate Pose in free space.
+      title: Inaccurate Pose
+      required:
+      - basic_pose
+      - dns
+      - id
+      - is_accurate
+      - taken_at
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: d290f1ee-6c54-4b01-90e6-d701748f0851
+        dns:
+          type: string
+          description: Unique name used to generate the uuid.
+          example: known-pose-bottle-cap-workbench
+        basic_pose:
+          $ref: '#/components/schemas/BasicPose'
+        is_accurate:
+          type: boolean
+          example: false
+        taken_at:
+          type: string
+          format: date-time
+      description: A unique and stamped inaccurate Pose in free space.
+      example:
+        taken_at: 2000-01-23T04:56:07.000+00:00
+        dns: known-pose-bottle-cap-workbench
+        is_accurate: false
+        id: d290f1ee-6c54-4b01-90e6-d701748f0851
+        basic_pose:
+          orientation:
+            w: 7.061401241503109
+            x: 5.962133916683182
+            y: 5.637376656633329
+            z: 2.3021358869347655
+          name: Bottle Cap Workbench
+          position:
+            x: 0.8008281904610115
+            y: 6.027456183070403
+            z: 1.4658129805029452
     BasicPose:
       title: Basic Pose
       required:
       - name
       - orientation
+      - poseType
       - position
       type: object
       properties:
@@ -221,6 +339,17 @@ components:
         orientation:
           $ref: '#/components/schemas/Orientation'
       description: An basic Pose in free space composed of position and orientation.
+      example:
+        orientation:
+          w: 7.061401241503109
+          x: 5.962133916683182
+          y: 5.637376656633329
+          z: 2.3021358869347655
+        name: Bottle Cap Workbench
+        position:
+          x: 0.8008281904610115
+          y: 6.027456183070403
+          z: 1.4658129805029452
     Position:
       title: Point Position
       required:
@@ -238,6 +367,10 @@ components:
           type: number
           format: double
       description: Position of a point in free space.
+      example:
+        x: 0.8008281904610115
+        y: 6.027456183070403
+        z: 1.4658129805029452
     Orientation:
       title: Orientation Quaternion
       required:
@@ -259,6 +392,11 @@ components:
           type: number
           format: double
       description: Orientation in free space in quaternion form.
+      example:
+        w: 7.061401241503109
+        x: 5.962133916683182
+        y: 5.637376656633329
+        z: 2.3021358869347655
     inline_response_200:
       required:
       - deleted
