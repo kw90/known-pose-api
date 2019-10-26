@@ -88,6 +88,7 @@ class AccuratePose(Model):
     def dns(self) -> str:
         """Gets the dns of this AccuratePose.
 
+        Unique name used to generate the uuid.  # noqa: E501
 
         :return: The dns of this AccuratePose.
         :rtype: str
@@ -98,6 +99,7 @@ class AccuratePose(Model):
     def dns(self, dns: str):
         """Sets the dns of this AccuratePose.
 
+        Unique name used to generate the uuid.  # noqa: E501
 
         :param dns: The dns of this AccuratePose.
         :type dns: str

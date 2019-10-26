@@ -169,6 +169,7 @@ class InaccuratePose(Model):
     def dns(self) -> str:
         """Gets the dns of this InaccuratePose.
 
+        Unique name used to generate the uuid.  # noqa: E501
 
         :return: The dns of this InaccuratePose.
         :rtype: str
@@ -179,6 +180,7 @@ class InaccuratePose(Model):
     def dns(self, dns: str):
         """Sets the dns of this InaccuratePose.
 
+        Unique name used to generate the uuid.  # noqa: E501
 
         :param dns: The dns of this InaccuratePose.
         :type dns: str

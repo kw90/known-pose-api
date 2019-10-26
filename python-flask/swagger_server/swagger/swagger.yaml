@@ -159,6 +159,14 @@ paths:
         defined accurate semantic poses in the environment
       operationId: search_accurate_pose
       parameters:
+      - name: id
+        in: query
+        description: optional uuid of a single accurate pose to be returned
+        required: false
+        style: form
+        explode: true
+        schema:
+          type: string
       - name: searchString
         in: query
         description: pass an optional search string for looking up a pose
@@ -203,7 +211,8 @@ components:
     AccuratePose:
       allOf:
       - $ref: '#/components/schemas/InaccuratePose'
-      - required:
+      - title: Accurate Pose
+        required:
         - reference_scan
         type: object
         properties:
@@ -229,10 +238,12 @@ components:
               0.944 0.29474 0 4.2108e+06
               0.98111 0.24247 0 4.2108e+06
               ...
+        description: A unique and stamped accurate Pose in free space.
     InaccuratePose:
       allOf:
       - $ref: '#/components/schemas/BasicPose'
-      - required:
+      - title: Inaccurate Pose
+        required:
         - dns
         - id
         - is_accurate
@@ -245,17 +256,21 @@ components:
             example: d290f1ee-6c54-4b01-90e6-d701748f0851
           dns:
             type: string
+            description: Unique name used to generate the uuid.
             example: known-pose-bottle-cap-workbench
           is_accurate:
             type: boolean
-            example: true
+            example: false
           taken_at:
             type: string
             format: date-time
+        description: A unique and stamped inaccurate Pose in free space.
     BasicPose:
+      title: Basic Pose
       required:
       - name
       - orientation
+      - poseType
       - position
       type: object
       properties:
@@ -266,7 +281,11 @@ components:
           $ref: '#/components/schemas/Position'
         orientation:
           $ref: '#/components/schemas/Orientation'
+      description: An basic Pose in free space composed of position and orientation.
+      discriminator:
+        propertyName: poseType
     Position:
+      title: Point Position
       required:
       - x
       - y
@@ -281,7 +300,9 @@ components:
         z:
           type: number
           format: double
+      description: Position of a point in free space.
     Orientation:
+      title: Orientation Quaternion
       required:
       - w
       - x
@@ -300,6 +321,7 @@ components:
         w:
           type: number
           format: double
+      description: Orientation in free space in quaternion form.
     inline_response_200:
       required:
       - deleted

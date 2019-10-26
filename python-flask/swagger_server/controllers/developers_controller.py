@@ -36,11 +36,13 @@ def poses_id_delete(id):  # noqa: E501
     return 'do some magic!'
 
 
-def search_accurate_pose(search_string=None, skip=None, limit=None):  # noqa: E501
+def search_accurate_pose(id=None, search_string=None, skip=None, limit=None):  # noqa: E501
     """searches accurate pose
 
     By passing in the appropriate options, you can search for defined accurate semantic poses in the environment  # noqa: E501
 
+    :param id: optional uuid of a single accurate pose to be returned
+    :type id: str
     :param search_string: pass an optional search string for looking up a pose
     :type search_string: str
     :param skip: number of records to skip for pagination

@@ -45,7 +45,8 @@ class TestDevelopersController(BaseTestCase):
 
         searches accurate pose
         """
-        query_string = [('search_string', 'search_string_example'),
+        query_string = [('id', 'id_example'),
+                        ('search_string', 'search_string_example'),
                         ('skip', 1),
                         ('limit', 50)]
         response = self.client.open(
