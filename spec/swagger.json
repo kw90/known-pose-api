@@ -1,9 +1,9 @@
 {
   "openapi" : "3.0.0",
   "info" : {
-    "version" : "1.2.0",
+    "version" : "1.1.0",
     "title" : "Known Pose API",
-    "description" : "Define and retrieve (accurate) semantic poses in a 2D environment.",
+    "description" : "Define and retrieve (accurate) semantic poses in a 2D environment. This version is a workaround for some not yet available features of the OpenAPI Specification v3.0 (e.g. `anyOf` as a response type and adding a  `discriminator` for supporting polymorphism).\n",
     "contact" : {
       "email" : "Kai.Waelti@dfki.de",
       "name" : "Kai Waelti"
@@ -23,8 +23,16 @@
         "tags" : [ "developers" ],
         "summary" : "searches pose",
         "operationId" : "searchPose",
-        "description" : "By passing in the appropriate options, you can search for\ndefined semantic poses in the environment\n",
+        "description" : "By passing in the appropriate options, you can search for defined semantic poses in the environment\n",
         "parameters" : [ {
+          "in" : "query",
+          "name" : "id",
+          "description" : "optional uuid of a single pose to be returned",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
           "in" : "query",
           "name" : "searchString",
           "description" : "pass an optional search string for looking up a pose",
@@ -53,14 +61,6 @@
             "minimum" : 0,
             "maximum" : 50
           }
-        }, {
-          "in" : "query",
-          "name" : "isAccuratePose",
-          "description" : "filter by pose accuracy",
-          "required" : false,
-          "schema" : {
-            "type" : "boolean"
-          }
         } ],
         "responses" : {
           "200" : {
@@ -68,7 +68,10 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "$ref" : "#/components/schemas/AnyPoses"
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/InaccuratePose"
+                  }
                 }
               }
             }
@@ -180,27 +183,71 @@
           }
         }
       }
+    },
+    "/poses/accurate" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "searches accurate pose",
+        "operationId" : "searchAccuratePose",
+        "description" : "By passing in the appropriate options, you can search for\ndefined accurate semantic poses in the environment\n",
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "id",
+          "description" : "optional uuid of a single accurate pose to be returned",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "in" : "query",
+          "name" : "searchString",
+          "description" : "pass an optional search string for looking up a pose",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "in" : "query",
+          "name" : "skip",
+          "description" : "number of records to skip for pagination",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "minimum" : 0
+          }
+        }, {
+          "in" : "query",
+          "name" : "limit",
+          "description" : "maximum number of records to return",
+          "required" : false,
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "minimum" : 0,
+            "maximum" : 50
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search results matching criteria",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AccuratePose"
+                }
+              }
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
     }
   },
   "components" : {
     "schemas" : {
-      "AnyPoses" : {
-        "type" : "array",
-        "title" : "Any Poses",
-        "description" : "Workaround Schema to allow sending different pose types in an array as a response.\n",
-        "items" : {
-          "anyOf" : [ {
-            "$ref" : "#/components/schemas/BasicPose"
-          }, {
-            "$ref" : "#/components/schemas/InaccuratePose"
-          }, {
-            "$ref" : "#/components/schemas/AccuratePose"
-          } ],
-          "discriminator" : {
-            "propertyName" : "poseType"
-          }
-        }
-      },
       "AccuratePose" : {
         "allOf" : [ {
           "$ref" : "#/components/schemas/InaccuratePose"
@@ -225,12 +272,21 @@
           "type" : "object",
           "title" : "Inaccurate Pose",
           "description" : "A unique and stamped inaccurate Pose in free space.",
-          "required" : [ "id", "taken_at" ],
+          "required" : [ "id", "dns", "taken_at", "is_accurate" ],
           "properties" : {
             "id" : {
               "type" : "string",
               "format" : "uuid",
               "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
+            },
+            "dns" : {
+              "type" : "string",
+              "example" : "known-pose-bottle-cap-workbench",
+              "description" : "Unique name used to generate the uuid."
+            },
+            "is_accurate" : {
+              "type" : "boolean",
+              "example" : false
             },
             "taken_at" : {
               "type" : "string",
@@ -307,6 +363,9 @@
   },
   "servers" : [ {
     "description" : "SwaggerHub API Auto Mocking",
-    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.2.0"
+    "url" : "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0"
+  }, {
+    "url" : "http://robot-mb-01:9092/kw90/known-pose-api/1.1.0",
+    "description" : "API Endpoint on Mobility Base Robot"
   } ]
 }
