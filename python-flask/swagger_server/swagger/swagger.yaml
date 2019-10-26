@@ -350,8 +350,6 @@ components:
           x: 0.8008281904610115
           y: 6.027456183070403
           z: 1.4658129805029452
-      discriminator:
-        propertyName: poseType
     Position:
       title: Point Position
       required:
