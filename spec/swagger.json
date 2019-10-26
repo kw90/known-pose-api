@@ -298,9 +298,6 @@
         "type" : "object",
         "title" : "Basic Pose",
         "description" : "An basic Pose in free space composed of position and orientation.",
-        "discriminator" : {
-          "propertyName" : "poseType"
-        },
         "required" : [ "name", "position", "orientation", "poseType" ],
         "properties" : {
           "name" : {
