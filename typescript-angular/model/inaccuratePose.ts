@@ -15,5 +15,10 @@ import { Position } from './position';
 
 export interface InaccuratePose extends BasicPose { 
     id: string;
+    /**
+     * Unique name used to generate the uuid.
+     */
+    dns: string;
+    isAccurate: boolean;
     takenAt: Date;
 }
