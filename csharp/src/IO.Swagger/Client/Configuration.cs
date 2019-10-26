@@ -28,7 +28,7 @@ namespace IO.Swagger.Client
         /// Version of the package.
         /// </summary>
         /// <value>Version of the package.</value>
-        public const string Version = "1.0.0";
+        public const string Version = "1.1.5";
 
         /// <summary>
         /// Identifier for ISO 8601 DateTime Format
@@ -113,7 +113,7 @@ namespace IO.Swagger.Client
         /// </summary>
         public Configuration()
         {
-            UserAgent = "Swagger-Codegen/1.0.0/csharp";
+            UserAgent = "Swagger-Codegen/1.1.5/csharp";
             BasePath = "https://virtserver.swaggerhub.com/kw90/known-pose-api/1.1.0";
             DefaultHeader = new ConcurrentDictionary<string, string>();
             ApiKey = new ConcurrentDictionary<string, string>();
@@ -186,7 +186,7 @@ namespace IO.Swagger.Client
             string tempFolderPath = null,
             string dateTimeFormat = null,
             int timeout = 100000,
-            string userAgent = "Swagger-Codegen/1.0.0/csharp"
+            string userAgent = "Swagger-Codegen/1.1.5/csharp"
             // ReSharper restore UnusedParameter.Local
             )
         {
@@ -421,7 +421,7 @@ namespace IO.Swagger.Client
             report += "    OS: " + System.Environment.OSVersion + "\n";
             report += "    .NET Framework Version: " + System.Environment.Version  + "\n";
             report += "    Version of the API: 1.1.0\n";
-            report += "    SDK Package Version: 1.0.0\n";
+            report += "    SDK Package Version: 1.1.5\n";
 
             return report;
         }
