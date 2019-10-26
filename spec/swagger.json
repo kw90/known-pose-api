@@ -192,6 +192,14 @@
         "description" : "By passing in the appropriate options, you can search for\ndefined accurate semantic poses in the environment\n",
         "parameters" : [ {
           "in" : "query",
+          "name" : "id",
+          "description" : "optional uuid of a single accurate pose to be returned",
+          "required" : false,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "in" : "query",
           "name" : "searchString",
           "description" : "pass an optional search string for looking up a pose",
           "required" : false,
@@ -245,6 +253,8 @@
           "$ref" : "#/components/schemas/InaccuratePose"
         }, {
           "type" : "object",
+          "title" : "Accurate Pose",
+          "description" : "A unique and stamped accurate Pose in free space.",
           "required" : [ "reference_scan" ],
           "properties" : {
             "reference_scan" : {
@@ -260,6 +270,8 @@
           "$ref" : "#/components/schemas/BasicPose"
         }, {
           "type" : "object",
+          "title" : "Inaccurate Pose",
+          "description" : "A unique and stamped inaccurate Pose in free space.",
           "required" : [ "id", "dns", "taken_at", "is_accurate" ],
           "properties" : {
             "id" : {
@@ -269,11 +281,12 @@
             },
             "dns" : {
               "type" : "string",
-              "example" : "known-pose-bottle-cap-workbench"
+              "example" : "known-pose-bottle-cap-workbench",
+              "description" : "Unique name used to generate the uuid."
             },
             "is_accurate" : {
               "type" : "boolean",
-              "example" : true
+              "example" : false
             },
             "taken_at" : {
               "type" : "string",
@@ -285,7 +298,12 @@
       },
       "BasicPose" : {
         "type" : "object",
-        "required" : [ "name", "position", "orientation" ],
+        "title" : "Basic Pose",
+        "description" : "An basic Pose in free space composed of position and orientation.",
+        "discriminator" : {
+          "propertyName" : "poseType"
+        },
+        "required" : [ "name", "position", "orientation", "poseType" ],
         "properties" : {
           "name" : {
             "type" : "string",
@@ -300,6 +318,8 @@
         }
       },
       "Position" : {
+        "title" : "Point Position",
+        "description" : "Position of a point in free space.",
         "required" : [ "x", "y", "z" ],
         "properties" : {
           "x" : {
@@ -317,6 +337,8 @@
         }
       },
       "Orientation" : {
+        "title" : "Orientation Quaternion",
+        "description" : "Orientation in free space in quaternion form.",
         "required" : [ "x", "y", "z", "w" ],
         "properties" : {
           "x" : {
