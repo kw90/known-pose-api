@@ -34,7 +34,7 @@
           }
         }, {
           "in" : "query",
-          "name" : "searchString",
+          "name" : "search_string",
           "description" : "pass an optional search string for looking up a pose",
           "required" : false,
           "schema" : {
@@ -68,10 +68,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/InaccuratePose"
-                  }
+                  "$ref" : "#/components/schemas/InaccuratePoseArray"
                 }
               }
             }
@@ -138,7 +135,7 @@
                     },
                     "deleted" : {
                       "type" : "boolean",
-                      "example" : "true"
+                      "example" : true
                     }
                   },
                   "required" : [ "id", "deleted" ]
@@ -200,7 +197,7 @@
           }
         }, {
           "in" : "query",
-          "name" : "searchString",
+          "name" : "search_string",
           "description" : "pass an optional search string for looking up a pose",
           "required" : false,
           "schema" : {
@@ -234,10 +231,7 @@
             "content" : {
               "application/json" : {
                 "schema" : {
-                  "type" : "array",
-                  "items" : {
-                    "$ref" : "#/components/schemas/AccuratePose"
-                  }
+                  "$ref" : "#/components/schemas/AccuratePoseArray"
                 }
               }
             }
@@ -251,6 +245,34 @@
   },
   "components" : {
     "schemas" : {
+      "AccuratePoseArray" : {
+        "type" : "object",
+        "title" : "Accurate Pose Array",
+        "description" : "Array containing matching accurate poses",
+        "required" : [ "pose_array" ],
+        "properties" : {
+          "pose_array" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/AccuratePose"
+            }
+          }
+        }
+      },
+      "InaccuratePoseArray" : {
+        "type" : "object",
+        "title" : "Inaccurate Pose Array",
+        "description" : "Array containing matching poses",
+        "required" : [ "pose_array" ],
+        "properties" : {
+          "pose_array" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/InaccuratePose"
+            }
+          }
+        }
+      },
       "AccuratePose" : {
         "type" : "object",
         "title" : "Accurate Pose",
@@ -301,7 +323,7 @@
         "type" : "object",
         "title" : "Basic Pose",
         "description" : "An basic Pose in free space composed of position and orientation.",
-        "required" : [ "name", "position", "orientation", "poseType" ],
+        "required" : [ "name", "position", "orientation" ],
         "properties" : {
           "name" : {
             "type" : "string",
