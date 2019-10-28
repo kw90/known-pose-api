@@ -96,7 +96,7 @@ namespace IO.Swagger.Test
             //int? skip = null;
             //int? limit = null;
             //var response = instance.SearchAccuratePose(id, searchString, skip, limit);
-            //Assert.IsInstanceOf<AccuratePose> (response, "response is AccuratePose");
+            //Assert.IsInstanceOf<AccuratePoseArray> (response, "response is AccuratePoseArray");
         }
         /// <summary>
         /// Test SearchPose
@@ -110,7 +110,7 @@ namespace IO.Swagger.Test
             //int? skip = null;
             //int? limit = null;
             //var response = instance.SearchPose(id, searchString, skip, limit);
-            //Assert.IsInstanceOf<List<InaccuratePose>> (response, "response is List<InaccuratePose>");
+            //Assert.IsInstanceOf<InaccuratePoseArray> (response, "response is InaccuratePoseArray");
         }
     }
 

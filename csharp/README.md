@@ -102,8 +102,10 @@ Class | Method | HTTP request | Description
 ## Documentation for Models
 
  - [Model.AccuratePose](docs/AccuratePose.md)
+ - [Model.AccuratePoseArray](docs/AccuratePoseArray.md)
  - [Model.BasicPose](docs/BasicPose.md)
  - [Model.InaccuratePose](docs/InaccuratePose.md)
+ - [Model.InaccuratePoseArray](docs/InaccuratePoseArray.md)
  - [Model.InlineResponse200](docs/InlineResponse200.md)
  - [Model.Orientation](docs/Orientation.md)
  - [Model.Position](docs/Position.md)

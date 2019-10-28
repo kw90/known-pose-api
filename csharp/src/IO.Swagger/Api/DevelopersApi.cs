@@ -76,8 +76,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>AccuratePose</returns>
-        AccuratePose SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>AccuratePoseArray</returns>
+        AccuratePoseArray SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null);
 
         /// <summary>
         /// searches accurate pose
@@ -90,8 +90,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of AccuratePose</returns>
-        ApiResponse<AccuratePose> SearchAccuratePoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>ApiResponse of AccuratePoseArray</returns>
+        ApiResponse<AccuratePoseArray> SearchAccuratePoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
         /// <summary>
         /// searches pose
         /// </summary>
@@ -103,8 +103,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>List&lt;InaccuratePose&gt;</returns>
-        List<InaccuratePose> SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>InaccuratePoseArray</returns>
+        InaccuratePoseArray SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null);
 
         /// <summary>
         /// searches pose
@@ -117,8 +117,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of List&lt;InaccuratePose&gt;</returns>
-        ApiResponse<List<InaccuratePose>> SearchPoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>ApiResponse of InaccuratePoseArray</returns>
+        ApiResponse<InaccuratePoseArray> SearchPoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -174,8 +174,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of AccuratePose</returns>
-        System.Threading.Tasks.Task<AccuratePose> SearchAccuratePoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>Task of AccuratePoseArray</returns>
+        System.Threading.Tasks.Task<AccuratePoseArray> SearchAccuratePoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null);
 
         /// <summary>
         /// searches accurate pose
@@ -188,8 +188,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (AccuratePose)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AccuratePose>> SearchAccuratePoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>Task of ApiResponse (AccuratePoseArray)</returns>
+        System.Threading.Tasks.Task<ApiResponse<AccuratePoseArray>> SearchAccuratePoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
         /// <summary>
         /// searches pose
         /// </summary>
@@ -201,8 +201,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of List&lt;InaccuratePose&gt;</returns>
-        System.Threading.Tasks.Task<List<InaccuratePose>> SearchPoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>Task of InaccuratePoseArray</returns>
+        System.Threading.Tasks.Task<InaccuratePoseArray> SearchPoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null);
 
         /// <summary>
         /// searches pose
@@ -215,8 +215,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;InaccuratePose&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<InaccuratePose>>> SearchPoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
+        /// <returns>Task of ApiResponse (InaccuratePoseArray)</returns>
+        System.Threading.Tasks.Task<ApiResponse<InaccuratePoseArray>> SearchPoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null);
         #endregion Asynchronous Operations
     }
 
@@ -604,10 +604,10 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>AccuratePose</returns>
-        public AccuratePose SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>AccuratePoseArray</returns>
+        public AccuratePoseArray SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
-             ApiResponse<AccuratePose> localVarResponse = SearchAccuratePoseWithHttpInfo(id, searchString, skip, limit);
+             ApiResponse<AccuratePoseArray> localVarResponse = SearchAccuratePoseWithHttpInfo(id, searchString, skip, limit);
              return localVarResponse.Data;
         }
 
@@ -619,8 +619,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of AccuratePose</returns>
-        public ApiResponse< AccuratePose > SearchAccuratePoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>ApiResponse of AccuratePoseArray</returns>
+        public ApiResponse< AccuratePoseArray > SearchAccuratePoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
 
             var localVarPath = "/poses/accurate";
@@ -645,7 +645,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search_string", searchString)); // query parameter
             if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
@@ -662,9 +662,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<AccuratePose>(localVarStatusCode,
+            return new ApiResponse<AccuratePoseArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (AccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePose)));
+                (AccuratePoseArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePoseArray)));
         }
 
         /// <summary>
@@ -675,10 +675,10 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of AccuratePose</returns>
-        public async System.Threading.Tasks.Task<AccuratePose> SearchAccuratePoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>Task of AccuratePoseArray</returns>
+        public async System.Threading.Tasks.Task<AccuratePoseArray> SearchAccuratePoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
-             ApiResponse<AccuratePose> localVarResponse = await SearchAccuratePoseAsyncWithHttpInfo(id, searchString, skip, limit);
+             ApiResponse<AccuratePoseArray> localVarResponse = await SearchAccuratePoseAsyncWithHttpInfo(id, searchString, skip, limit);
              return localVarResponse.Data;
 
         }
@@ -691,8 +691,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (AccuratePose)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<AccuratePose>> SearchAccuratePoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>Task of ApiResponse (AccuratePoseArray)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<AccuratePoseArray>> SearchAccuratePoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
 
             var localVarPath = "/poses/accurate";
@@ -717,7 +717,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search_string", searchString)); // query parameter
             if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
@@ -734,9 +734,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<AccuratePose>(localVarStatusCode,
+            return new ApiResponse<AccuratePoseArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (AccuratePose) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePose)));
+                (AccuratePoseArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(AccuratePoseArray)));
         }
 
         /// <summary>
@@ -747,10 +747,10 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>List&lt;InaccuratePose&gt;</returns>
-        public List<InaccuratePose> SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>InaccuratePoseArray</returns>
+        public InaccuratePoseArray SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
-             ApiResponse<List<InaccuratePose>> localVarResponse = SearchPoseWithHttpInfo(id, searchString, skip, limit);
+             ApiResponse<InaccuratePoseArray> localVarResponse = SearchPoseWithHttpInfo(id, searchString, skip, limit);
              return localVarResponse.Data;
         }
 
@@ -762,8 +762,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>ApiResponse of List&lt;InaccuratePose&gt;</returns>
-        public ApiResponse< List<InaccuratePose> > SearchPoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>ApiResponse of InaccuratePoseArray</returns>
+        public ApiResponse< InaccuratePoseArray > SearchPoseWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
 
             var localVarPath = "/poses";
@@ -788,7 +788,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search_string", searchString)); // query parameter
             if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
@@ -805,9 +805,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<InaccuratePose>>(localVarStatusCode,
+            return new ApiResponse<InaccuratePoseArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<InaccuratePose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InaccuratePose>)));
+                (InaccuratePoseArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InaccuratePoseArray)));
         }
 
         /// <summary>
@@ -818,10 +818,10 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of List&lt;InaccuratePose&gt;</returns>
-        public async System.Threading.Tasks.Task<List<InaccuratePose>> SearchPoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>Task of InaccuratePoseArray</returns>
+        public async System.Threading.Tasks.Task<InaccuratePoseArray> SearchPoseAsync (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
-             ApiResponse<List<InaccuratePose>> localVarResponse = await SearchPoseAsyncWithHttpInfo(id, searchString, skip, limit);
+             ApiResponse<InaccuratePoseArray> localVarResponse = await SearchPoseAsyncWithHttpInfo(id, searchString, skip, limit);
              return localVarResponse.Data;
 
         }
@@ -834,8 +834,8 @@ namespace IO.Swagger.Api
         /// <param name="searchString">pass an optional search string for looking up a pose (optional)</param>
         /// <param name="skip">number of records to skip for pagination (optional)</param>
         /// <param name="limit">maximum number of records to return (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;InaccuratePose&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<InaccuratePose>>> SearchPoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
+        /// <returns>Task of ApiResponse (InaccuratePoseArray)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<InaccuratePoseArray>> SearchPoseAsyncWithHttpInfo (string id = null, string searchString = null, int? skip = null, int? limit = null)
         {
 
             var localVarPath = "/poses";
@@ -860,7 +860,7 @@ namespace IO.Swagger.Api
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
             if (id != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "id", id)); // query parameter
-            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "searchString", searchString)); // query parameter
+            if (searchString != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "search_string", searchString)); // query parameter
             if (skip != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "skip", skip)); // query parameter
             if (limit != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "limit", limit)); // query parameter
 
@@ -877,9 +877,9 @@ namespace IO.Swagger.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<InaccuratePose>>(localVarStatusCode,
+            return new ApiResponse<InaccuratePoseArray>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => string.Join(",", x.Value)),
-                (List<InaccuratePose>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<InaccuratePose>)));
+                (InaccuratePoseArray) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(InaccuratePoseArray)));
         }
 
     }
