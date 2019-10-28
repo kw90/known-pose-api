@@ -50,7 +50,7 @@ def search_accurate_pose(id=None, search_string=None, skip=None, limit=None):  #
     :param limit: maximum number of records to return
     :type limit: int
 
-    :rtype: AccuratePose
+    :rtype: List[AccuratePose]
     """
     return 'do some magic!'
 
