@@ -15,19 +15,19 @@ To run the server, please execute the following from the root directory:
 
 ```
 pip3 install -r requirements.txt
-python3 -m swagger_server
+python3 -m known_pose_service
 ```
 
 and open your browser to here:
 
 ```
-http://localhost:8080/kw90/known-pose-api/1.1.0/ui/
+http://localhost:9092/kw90/known-pose-api/1.1.0/ui/
 ```
 
 Your Swagger definition lives here:
 
 ```
-http://localhost:8080/kw90/known-pose-api/1.1.0/swagger.json
+http://localhost:9092/kw90/known-pose-api/1.1.0/swagger.json
 ```
 
 To launch the integration tests, use tox:
@@ -42,8 +42,8 @@ To run the server on a Docker container, please execute the following from the r
 
 ```bash
 # building the image
-docker build -t swagger_server .
+docker build -t known_pose_service .
 
 # starting up a container
-docker run -p 8080:8080 swagger_server
+docker run -p 9092:9092 known_pose_service
 ```

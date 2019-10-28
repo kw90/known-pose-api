@@ -81,7 +81,7 @@ paths:
                 x-content-type: application/json
         400:
           description: bad input parameter
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
+      x-openapi-router-controller: known_pose_service.controllers.developers_controller
     post:
       tags:
       - developers
@@ -102,7 +102,7 @@ paths:
           description: invalid input, object invalid
         409:
           description: an existing pose already exists
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
+      x-openapi-router-controller: known_pose_service.controllers.developers_controller
   /poses/{id}:
     delete:
       tags:
@@ -152,7 +152,7 @@ paths:
           description: Internal Server Error. For some unknown reason the server failed.
         503:
           description: Service Unavailable. Please try again later.
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
+      x-openapi-router-controller: known_pose_service.controllers.developers_controller
   /poses/accurate:
     get:
       tags:
@@ -209,7 +209,7 @@ paths:
                 $ref: '#/components/schemas/AccuratePose'
         400:
           description: bad input parameter
-      x-openapi-router-controller: swagger_server.controllers.developers_controller
+      x-openapi-router-controller: known_pose_service.controllers.developers_controller
 components:
   schemas:
     AccuratePose:

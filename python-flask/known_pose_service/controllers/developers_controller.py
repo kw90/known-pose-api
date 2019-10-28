@@ -1,11 +1,11 @@
 import connexion
 import six
 
-from swagger_server.models.accurate_pose import AccuratePose  # noqa: E501
-from swagger_server.models.basic_pose import BasicPose  # noqa: E501
-from swagger_server.models.inaccurate_pose import InaccuratePose  # noqa: E501
-from swagger_server.models.inline_response200 import InlineResponse200  # noqa: E501
-from swagger_server import util
+from known_pose_service.models.accurate_pose import AccuratePose  # noqa: E501
+from known_pose_service.models.basic_pose import BasicPose  # noqa: E501
+from known_pose_service.models.inaccurate_pose import InaccuratePose  # noqa: E501
+from known_pose_service.models.inline_response200 import InlineResponse200  # noqa: E501
+from known_pose_service import util
 
 
 def add_pose(body=None):  # noqa: E501
