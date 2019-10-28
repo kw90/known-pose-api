@@ -130,7 +130,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="searchaccuratepose"></a>
 # **SearchAccuratePose**
-> AccuratePose SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null)
+> AccuratePoseArray SearchAccuratePose (string id = null, string searchString = null, int? skip = null, int? limit = null)
 
 searches accurate pose
 
@@ -159,7 +159,7 @@ namespace Example
             try
             {
                 // searches accurate pose
-                AccuratePose result = apiInstance.SearchAccuratePose(id, searchString, skip, limit);
+                AccuratePoseArray result = apiInstance.SearchAccuratePose(id, searchString, skip, limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AccuratePose**](AccuratePose.md)
+[**AccuratePoseArray**](AccuratePoseArray.md)
 
 ### Authorization
 
@@ -196,7 +196,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 <a name="searchpose"></a>
 # **SearchPose**
-> List<InaccuratePose> SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null)
+> InaccuratePoseArray SearchPose (string id = null, string searchString = null, int? skip = null, int? limit = null)
 
 searches pose
 
@@ -225,7 +225,7 @@ namespace Example
             try
             {
                 // searches pose
-                List&lt;InaccuratePose&gt; result = apiInstance.SearchPose(id, searchString, skip, limit);
+                InaccuratePoseArray result = apiInstance.SearchPose(id, searchString, skip, limit);
                 Debug.WriteLine(result);
             }
             catch (Exception e)
@@ -248,7 +248,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List<InaccuratePose>**](InaccuratePose.md)
+[**InaccuratePoseArray**](InaccuratePoseArray.md)
 
 ### Authorization
 
