@@ -131,6 +131,7 @@
                     "id" : {
                       "type" : "string",
                       "format" : "uuid",
+                      "pattern" : "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
                       "example" : "70c6530a-184e-49a6-b733-66bdf1d7b7f1"
                     },
                     "deleted" : {
@@ -298,6 +299,7 @@
           "id" : {
             "type" : "string",
             "format" : "uuid",
+            "pattern" : "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
             "example" : "d290f1ee-6c54-4b01-90e6-d701748f0851"
           },
           "dns" : {
