@@ -1,9 +1,9 @@
 import connexion
 import six
 
-from known_pose_service.models.accurate_pose import AccuratePose  # noqa: E501
+from known_pose_service.models.accurate_pose_array import AccuratePoseArray  # noqa: E501
 from known_pose_service.models.basic_pose import BasicPose  # noqa: E501
-from known_pose_service.models.inaccurate_pose import InaccuratePose  # noqa: E501
+from known_pose_service.models.inaccurate_pose_array import InaccuratePoseArray  # noqa: E501
 from known_pose_service.models.inline_response200 import InlineResponse200  # noqa: E501
 from known_pose_service import util
 
@@ -50,7 +50,7 @@ def search_accurate_pose(id=None, search_string=None, skip=None, limit=None):  #
     :param limit: maximum number of records to return
     :type limit: int
 
-    :rtype: List[AccuratePose]
+    :rtype: AccuratePoseArray
     """
     return 'do some magic!'
 
@@ -69,6 +69,6 @@ def search_pose(id=None, search_string=None, skip=None, limit=None):  # noqa: E5
     :param limit: maximum number of records to return
     :type limit: int
 
-    :rtype: List[InaccuratePose]
+    :rtype: InaccuratePoseArray
     """
     return 'do some magic!'

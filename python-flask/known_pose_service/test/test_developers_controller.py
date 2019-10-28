@@ -5,9 +5,9 @@ from __future__ import absolute_import
 from flask import json
 from six import BytesIO
 
-from known_pose_service.models.accurate_pose import AccuratePose  # noqa: E501
+from known_pose_service.models.accurate_pose_array import AccuratePoseArray  # noqa: E501
 from known_pose_service.models.basic_pose import BasicPose  # noqa: E501
-from known_pose_service.models.inaccurate_pose import InaccuratePose  # noqa: E501
+from known_pose_service.models.inaccurate_pose_array import InaccuratePoseArray  # noqa: E501
 from known_pose_service.models.inline_response200 import InlineResponse200  # noqa: E501
 from known_pose_service.test import BaseTestCase
 
