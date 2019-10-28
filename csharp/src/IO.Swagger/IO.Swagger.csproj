@@ -12,7 +12,7 @@ Contact: Kai.Waelti@dfki.de
     
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32D8A37A-4322-46FB-A240-CBCC3E0CD5B0}</ProjectGuid>
+    <ProjectGuid>{BA711733-57F4-4C3C-A3FE-3AB4FC49DBA7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>IO.Swagger</RootNamespace>
