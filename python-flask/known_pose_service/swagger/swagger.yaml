@@ -40,7 +40,7 @@ paths:
         explode: true
         schema:
           type: string
-      - name: searchString
+      - name: search_string
         in: query
         description: pass an optional search string for looking up a pose
         required: false
@@ -75,10 +75,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/InaccuratePose'
-                x-content-type: application/json
+                $ref: '#/components/schemas/InaccuratePoseArray'
         400:
           description: bad input parameter
       x-openapi-router-controller: known_pose_service.controllers.developers_controller
@@ -171,7 +168,7 @@ paths:
         explode: true
         schema:
           type: string
-      - name: searchString
+      - name: search_string
         in: query
         description: pass an optional search string for looking up a pose
         required: false
@@ -206,15 +203,136 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/AccuratePose'
-                x-content-type: application/json
+                $ref: '#/components/schemas/AccuratePoseArray'
         400:
           description: bad input parameter
       x-openapi-router-controller: known_pose_service.controllers.developers_controller
 components:
   schemas:
+    AccuratePoseArray:
+      title: Accurate Pose Array
+      required:
+      - pose_array
+      type: object
+      properties:
+        pose_array:
+          type: array
+          items:
+            $ref: '#/components/schemas/AccuratePose'
+      description: Array containing matching accurate poses
+      example:
+        pose_array:
+        - reference_scan: |
+            VERSION .7
+            FIELDS x y z rgb
+            SIZE 4 4 4 4
+            TYPE F F F F
+            COUNT 1 1 1 1
+            WIDTH 213
+            HEIGHT 1
+            VIEWPOINT 0 0 0 1 0 0 0
+            POINTS 213
+            DATA ascii
+            0.93773 0.33763 0 4.2108e+06
+            0.90805 0.35641 0 4.2108e+06
+            0.81915 0.32 0 4.2108e+06
+            0.97192 0.278 0 4.2108e+06
+            0.944 0.29474 0 4.2108e+06
+            0.98111 0.24247 0 4.2108e+06
+            ...
+          inaccurate_pose:
+            taken_at: 2000-01-23T04:56:07.000+00:00
+            dns: known-pose-bottle-cap-workbench
+            is_accurate: false
+            id: d290f1ee-6c54-4b01-90e6-d701748f0851
+            basic_pose:
+              orientation:
+                w: 7.061401241503109
+                x: 5.962133916683182
+                y: 5.637376656633329
+                z: 2.3021358869347655
+              name: Bottle Cap Workbench
+              position:
+                x: 0.8008281904610115
+                y: 6.027456183070403
+                z: 1.4658129805029452
+        - reference_scan: |
+            VERSION .7
+            FIELDS x y z rgb
+            SIZE 4 4 4 4
+            TYPE F F F F
+            COUNT 1 1 1 1
+            WIDTH 213
+            HEIGHT 1
+            VIEWPOINT 0 0 0 1 0 0 0
+            POINTS 213
+            DATA ascii
+            0.93773 0.33763 0 4.2108e+06
+            0.90805 0.35641 0 4.2108e+06
+            0.81915 0.32 0 4.2108e+06
+            0.97192 0.278 0 4.2108e+06
+            0.944 0.29474 0 4.2108e+06
+            0.98111 0.24247 0 4.2108e+06
+            ...
+          inaccurate_pose:
+            taken_at: 2000-01-23T04:56:07.000+00:00
+            dns: known-pose-bottle-cap-workbench
+            is_accurate: false
+            id: d290f1ee-6c54-4b01-90e6-d701748f0851
+            basic_pose:
+              orientation:
+                w: 7.061401241503109
+                x: 5.962133916683182
+                y: 5.637376656633329
+                z: 2.3021358869347655
+              name: Bottle Cap Workbench
+              position:
+                x: 0.8008281904610115
+                y: 6.027456183070403
+                z: 1.4658129805029452
+    InaccuratePoseArray:
+      title: Inaccurate Pose Array
+      required:
+      - pose_array
+      type: object
+      properties:
+        pose_array:
+          type: array
+          items:
+            $ref: '#/components/schemas/InaccuratePose'
+      description: Array containing matching poses
+      example:
+        pose_array:
+        - taken_at: 2000-01-23T04:56:07.000+00:00
+          dns: known-pose-bottle-cap-workbench
+          is_accurate: false
+          id: d290f1ee-6c54-4b01-90e6-d701748f0851
+          basic_pose:
+            orientation:
+              w: 7.061401241503109
+              x: 5.962133916683182
+              y: 5.637376656633329
+              z: 2.3021358869347655
+            name: Bottle Cap Workbench
+            position:
+              x: 0.8008281904610115
+              y: 6.027456183070403
+              z: 1.4658129805029452
+        - taken_at: 2000-01-23T04:56:07.000+00:00
+          dns: known-pose-bottle-cap-workbench
+          is_accurate: false
+          id: d290f1ee-6c54-4b01-90e6-d701748f0851
+          basic_pose:
+            orientation:
+              w: 7.061401241503109
+              x: 5.962133916683182
+              y: 5.637376656633329
+              z: 2.3021358869347655
+            name: Bottle Cap Workbench
+            position:
+              x: 0.8008281904610115
+              y: 6.027456183070403
+              z: 1.4658129805029452
     AccuratePose:
       title: Accurate Pose
       required:
@@ -293,6 +411,7 @@ components:
       type: object
       properties:
         id:
+          pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
           type: string
           format: uuid
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
@@ -330,7 +449,6 @@ components:
       required:
       - name
       - orientation
-      - poseType
       - position
       type: object
       properties:
@@ -407,6 +525,7 @@ components:
       type: object
       properties:
         id:
+          pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
           type: string
           format: uuid
           example: 70c6530a-184e-49a6-b733-66bdf1d7b7f1
