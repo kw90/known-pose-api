@@ -206,7 +206,10 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AccuratePose'
+                type: array
+                items:
+                  $ref: '#/components/schemas/AccuratePose'
+                x-content-type: application/json
         400:
           description: bad input parameter
       x-openapi-router-controller: known_pose_service.controllers.developers_controller
