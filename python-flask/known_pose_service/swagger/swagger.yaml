@@ -1,4 +1,4 @@
-openapi: 3.0.0
+openapi: 3.0.1
 info:
   title: Known Pose API
   description: "Define and retrieve (accurate) semantic poses in a 2D environment.\
@@ -411,7 +411,6 @@ components:
       type: object
       properties:
         id:
-          pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
           type: string
           format: uuid
           example: d290f1ee-6c54-4b01-90e6-d701748f0851
@@ -525,7 +524,6 @@ components:
       type: object
       properties:
         id:
-          pattern: '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
           type: string
           format: uuid
           example: 70c6530a-184e-49a6-b733-66bdf1d7b7f1
