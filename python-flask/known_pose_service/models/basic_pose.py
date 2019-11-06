@@ -93,8 +93,6 @@ class BasicPose(Model):
         :param position: The position of this BasicPose.
         :type position: Position
         """
-        if position is None:
-            raise ValueError("Invalid value for `position`, must not be `None`")  # noqa: E501
 
         self._position = position
 
@@ -116,7 +114,5 @@ class BasicPose(Model):
         :param orientation: The orientation of this BasicPose.
         :type orientation: Orientation
         """
-        if orientation is None:
-            raise ValueError("Invalid value for `orientation`, must not be `None`")  # noqa: E501
 
         self._orientation = orientation
