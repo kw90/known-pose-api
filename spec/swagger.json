@@ -323,7 +323,7 @@
         "type" : "object",
         "title" : "Basic Pose",
         "description" : "An basic Pose in free space composed of position and orientation.",
-        "required" : [ "name", "position", "orientation" ],
+        "required" : [ "name" ],
         "properties" : {
           "name" : {
             "type" : "string",
