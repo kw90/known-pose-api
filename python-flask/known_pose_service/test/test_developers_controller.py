@@ -15,10 +15,24 @@ from known_pose_service.test import BaseTestCase
 class TestDevelopersController(BaseTestCase):
     """DevelopersController integration test stubs"""
 
-    def test_add_pose(self):
-        """Test case for add_pose
+    def test_add_accurate_pose(self):
+        """Test case for add_accurate_pose
 
-        adds a pose item
+        adds an accurate pose item
+        """
+        body = BasicPose()
+        response = self.client.open(
+            '/kw90/known-pose-api/1.1.0/poses/accurate',
+            method='POST',
+            data=json.dumps(body),
+            content_type='application/json')
+        self.assert200(response,
+                       'Response body is : ' + response.data.decode('utf-8'))
+
+    def test_add_inaccurate_pose(self):
+        """Test case for add_inaccurate_pose
+
+        adds an inaccurate pose item
         """
         body = BasicPose()
         response = self.client.open(

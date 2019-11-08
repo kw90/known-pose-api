@@ -8,10 +8,25 @@ from known_pose_service.models.inline_response200 import InlineResponse200  # no
 from known_pose_service import util
 
 
-def add_pose(body=None):  # noqa: E501
-    """adds a pose item
+def add_accurate_pose(body=None):  # noqa: E501
+    """adds an accurate pose item
 
-    Adds an accurate or inaccurate pose to the system. Add current pose (without pose request body) to add an accurate pose.  # noqa: E501
+    Adds an accurate pose to the system. Just give the Pose a name.  # noqa: E501
+
+    :param body: Optional pose item to add
+    :type body: dict | bytes
+
+    :rtype: None
+    """
+    if connexion.request.is_json:
+        body = BasicPose.from_dict(connexion.request.get_json())  # noqa: E501
+    return 'do some magic!'
+
+
+def add_inaccurate_pose(body=None):  # noqa: E501
+    """adds an inaccurate pose item
+
+    Adds an inaccurate pose to the system. Just give the Pose a name and optionally a Pose in the map to use.  # noqa: E501
 
     :param body: Optional pose item to add
     :type body: dict | bytes
