@@ -80,9 +80,9 @@
       },
       "post" : {
         "tags" : [ "developers" ],
-        "summary" : "adds a pose item",
-        "operationId" : "addPose",
-        "description" : "Adds an accurate or inaccurate pose to the system. Add current pose (without pose request body) to add an accurate pose.\n",
+        "summary" : "adds an inaccurate pose item",
+        "operationId" : "addInaccuratePose",
+        "description" : "Adds an inaccurate pose to the system. Just give the Pose a name and optionally a Pose in the map to use.\n",
         "responses" : {
           "201" : {
             "description" : "pose created"
@@ -238,6 +238,33 @@
           },
           "400" : {
             "description" : "bad input parameter"
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "adds an accurate pose item",
+        "operationId" : "addAccuratePose",
+        "description" : "Adds an accurate pose to the system. Just give the Pose a name.\n",
+        "responses" : {
+          "201" : {
+            "description" : "pose created"
+          },
+          "400" : {
+            "description" : "invalid input, object invalid"
+          },
+          "409" : {
+            "description" : "an existing pose already exists"
+          }
+        },
+        "requestBody" : {
+          "description" : "Optional pose item to add",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/BasicPose"
+              }
+            }
           }
         }
       }
