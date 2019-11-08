@@ -82,10 +82,10 @@ paths:
     post:
       tags:
       - developers
-      summary: adds a pose item
+      summary: adds an inaccurate pose item
       description: |
-        Adds an accurate or inaccurate pose to the system. Add current pose (without pose request body) to add an accurate pose.
-      operationId: add_pose
+        Adds an inaccurate pose to the system. Just give the Pose a name and optionally a Pose in the map to use.
+      operationId: add_inaccurate_pose
       requestBody:
         description: Optional pose item to add
         content:
@@ -206,6 +206,27 @@ paths:
                 $ref: '#/components/schemas/AccuratePoseArray'
         400:
           description: bad input parameter
+      x-openapi-router-controller: known_pose_service.controllers.developers_controller
+    post:
+      tags:
+      - developers
+      summary: adds an accurate pose item
+      description: |
+        Adds an accurate pose to the system. Just give the Pose a name.
+      operationId: add_accurate_pose
+      requestBody:
+        description: Optional pose item to add
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasicPose'
+      responses:
+        201:
+          description: pose created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing pose already exists
       x-openapi-router-controller: known_pose_service.controllers.developers_controller
 components:
   schemas:
